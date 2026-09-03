@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +13,8 @@
                 extend: {
                     colors: {
                         brand: {
-                            50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe',
-                            500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8',
+                            50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 
+                            500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 
                             800: '#1e40af', 900: '#1e3a8a', 950: '#172554'
                         }
                     },
@@ -30,10 +29,9 @@
     <!-- Google Fonts Inter & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    
     <!-- Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -44,198 +42,115 @@
 
     <style>
         /* Custom Scrollbars */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #94a3b8;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #64748b;
-        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
 
         /* Print Document Layout */
         @media print {
-            body * {
-                visibility: hidden;
-            }
-
-            #printableArea,
-            #printableArea * {
-                visibility: visible;
-            }
-
-            #printableArea {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                padding: 20px;
-            }
-
-            .no-print {
-                display: none !important;
-            }
+            body * { visibility: hidden; }
+            #printableArea, #printableArea * { visibility: visible; }
+            #printableArea { position: absolute; left: 0; top: 0; width: 100%; padding: 20px; }
+            .no-print { display: none !important; }
         }
 
         /* Animations */
-        .animate-fade-in {
-            animation: fadeIn 0.25s ease-in-out forwards;
-        }
-
+        .animate-fade-in { animation: fadeIn 0.25s ease-in-out forwards; }
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(4px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Sticky adjustments for tables */
-        .sticky-col-1 {
-            position: sticky;
-            left: 0;
-            z-index: 10;
-            background: inherit;
-            border-right: 1px solid #f1f5f9;
-        }
-
-        .sticky-col-2 {
-            position: sticky;
-            left: 35px;
-            z-index: 10;
-            background: inherit;
-            border-right: 1px solid #f1f5f9;
-        }
-
+        .sticky-col-1 { position: sticky; left: 0; z-index: 10; background: inherit; border-right: 1px solid #f1f5f9; }
+        .sticky-col-2 { position: sticky; left: 35px; z-index: 10; background: inherit; border-right: 1px solid #f1f5f9; }
         @media (min-width: 768px) {
-            .sticky-col-2 {
-                left: 45px;
-            }
+            .sticky-col-2 { left: 45px; }
         }
     </style>
 </head>
-
-<body
-    class="bg-slate-100 font-sans text-slate-800 flex flex-col min-h-screen selection:bg-brand-500 selection:text-white">
+<body class="bg-slate-100 font-sans text-slate-800 flex flex-col min-h-screen selection:bg-brand-500 selection:text-white">
 
     <!-- LOGIN & REGISTER SCREEN -->
-    <div id="loginScreen"
-        class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-brand-900 via-brand-800 to-slate-900 absolute inset-0 z-50">
+    <div id="loginScreen" class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-brand-900 via-brand-800 to-slate-900 absolute inset-0 z-50">
         <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden animate-fade-in relative">
             <div class="p-8 text-center bg-slate-50 border-b border-slate-100">
-                <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Logo"
-                    class="w-16 h-16 mx-auto mb-3 drop-shadow-md">
+                <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Logo" class="w-16 h-16 mx-auto mb-3 drop-shadow-md">
                 <h2 class="text-2xl font-bold text-slate-800">SIAGS Auth</h2>
                 <p class="text-xs text-slate-500 mt-1">Sistem Informasi Administrasi Guru & Sekolah</p>
             </div>
-
+            
             <!-- LOGIN CONTAINER -->
             <div id="loginContainer" class="p-8 space-y-6">
                 <!-- Toggle Tipe Login (3 Bagian) -->
                 <div class="flex p-1.5 bg-slate-100 rounded-xl gap-1">
-                    <button type="button" id="tabLoginAdmin" onclick="setLoginRole('Admin')"
-                        class="flex-1 py-2 text-[11px] sm:text-xs font-bold rounded-lg text-slate-500 hover:text-slate-700 transition">Admin</button>
-                    <button type="button" id="tabLoginGuru" onclick="setLoginRole('Guru')"
-                        class="flex-1 py-2 text-[11px] sm:text-xs font-bold rounded-lg shadow bg-white text-brand-600 transition">Guru</button>
-                    <button type="button" id="tabLoginSiswa" onclick="setLoginRole('Siswa')"
-                        class="flex-1 py-2 text-[11px] sm:text-xs font-bold rounded-lg text-slate-500 hover:text-slate-700 transition">Siswa</button>
+                    <button type="button" id="tabLoginAdmin" onclick="setLoginRole('Admin')" class="flex-1 py-2 text-[11px] sm:text-xs font-bold rounded-lg text-slate-500 hover:text-slate-700 transition">Admin</button>
+                    <button type="button" id="tabLoginGuru" onclick="setLoginRole('Guru')" class="flex-1 py-2 text-[11px] sm:text-xs font-bold rounded-lg shadow bg-white text-brand-600 transition">Guru</button>
+                    <button type="button" id="tabLoginSiswa" onclick="setLoginRole('Siswa')" class="flex-1 py-2 text-[11px] sm:text-xs font-bold rounded-lg text-slate-500 hover:text-slate-700 transition">Siswa</button>
                 </div>
 
                 <!-- Diubah dari form ke div agar tidak auto submit di GAS -->
                 <div id="loginForm" class="space-y-4">
                     <div>
                         <label class="block text-xs font-semibold text-slate-600 mb-1">Email / Username</label>
-                        <input type="email" id="loginEmail" required
-                            class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 outline-none transition"
-                            placeholder="admin@sekolah.id">
+                        <input type="email" id="loginEmail" required class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 outline-none transition" placeholder="admin@sekolah.id">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-600 mb-1 flex justify-between">
                             <span>Password</span>
                         </label>
                         <div class="relative">
-                            <input type="password" id="loginPass" required
-                                class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 outline-none transition pr-10"
-                                placeholder="••••••••">
-                            <button type="button" onclick="togglePasswordVisibility('loginPass', 'eyeIconLogin')"
-                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-brand-600 transition"
-                                title="Tampilkan Password">
+                            <input type="password" id="loginPass" required class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 outline-none transition pr-10" placeholder="••••••••">
+                            <button type="button" onclick="togglePasswordVisibility('loginPass', 'eyeIconLogin')" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-brand-600 transition" title="Tampilkan Password">
                                 <i id="eyeIconLogin" class="fa-regular fa-eye"></i>
                             </button>
                         </div>
                     </div>
-
+                    
                     <div class="pt-2">
-                        <button type="button" onclick="handleUnifiedLogin(event)"
-                            class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-sm transition shadow-md flex justify-center items-center gap-2">
+                        <button type="button" onclick="handleUnifiedLogin(event)" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-sm transition shadow-md flex justify-center items-center gap-2">
                             Masuk ke Sistem <i class="fa-solid fa-right-to-bracket"></i>
                         </button>
                     </div>
                 </div>
                 <div class="text-center text-xs mt-4">
-                    Siswa baru? <span onclick="toggleAuthMode()"
-                        class="text-brand-600 font-semibold hover:underline cursor-pointer">Daftar sekarang</span>
+                    Siswa baru? <span onclick="toggleAuthMode()" class="text-brand-600 font-semibold hover:underline cursor-pointer">Daftar sekarang</span>
                 </div>
             </div>
 
             <!-- REGISTER CONTAINER -->
             <div id="registerContainer" class="p-8 space-y-6 hidden">
                 <h3 class="font-bold text-slate-800 text-center text-lg">Buat Akun Siswa Baru</h3>
-                <p class="text-[10px] text-center text-slate-500 -mt-5">Akun Guru hanya dapat dibuat oleh Admin Sistem
-                </p>
+                <p class="text-[10px] text-center text-slate-500 -mt-5">Akun Guru hanya dapat dibuat oleh Admin Sistem</p>
                 <div id="registerForm" class="space-y-4">
                     <div>
                         <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Lengkap</label>
-                        <input type="text" id="regNama" required
-                            class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 outline-none transition"
-                            placeholder="Sesuai Akta Kelahiran">
+                        <input type="text" id="regNama" required class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 outline-none transition" placeholder="Sesuai Akta Kelahiran">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-600 mb-1">Email</label>
-                        <input type="email" id="regEmail" required
-                            class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 outline-none transition"
-                            placeholder="email@contoh.com">
+                        <input type="email" id="regEmail" required class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 outline-none transition" placeholder="email@contoh.com">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-600 mb-1">Kelas</label>
-                        <input type="text" id="regKelas" required
-                            class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 outline-none transition"
-                            placeholder="Contoh: X-A">
+                        <input type="text" id="regKelas" required class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 outline-none transition" placeholder="Contoh: X-A">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-600 mb-1">Password Baru</label>
                         <div class="relative">
-                            <input type="password" id="regPassword" required
-                                class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 outline-none transition pr-10"
-                                placeholder="Minimal 6 karakter">
-                            <button type="button" onclick="togglePasswordVisibility('regPassword', 'eyeIconReg')"
-                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-brand-600 transition"
-                                title="Tampilkan Password">
+                            <input type="password" id="regPassword" required class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 outline-none transition pr-10" placeholder="Minimal 6 karakter">
+                            <button type="button" onclick="togglePasswordVisibility('regPassword', 'eyeIconReg')" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-brand-600 transition" title="Tampilkan Password">
                                 <i id="eyeIconReg" class="fa-regular fa-eye"></i>
                             </button>
                         </div>
                     </div>
-                    <button type="button" onclick="handleRegister(event)"
-                        class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-sm transition shadow-md">
+                    <button type="button" onclick="handleRegister(event)" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-sm transition shadow-md">
                         Daftar Akun Siswa
                     </button>
                 </div>
                 <div class="text-center text-xs">
-                    Sudah punya akun? <span onclick="toggleAuthMode()"
-                        class="text-brand-600 font-semibold hover:underline cursor-pointer">Kembali ke Login</span>
+                    Sudah punya akun? <span onclick="toggleAuthMode()" class="text-brand-600 font-semibold hover:underline cursor-pointer">Kembali ke Login</span>
                 </div>
             </div>
         </div>
@@ -243,23 +158,16 @@
 
     <!-- MAIN APP WRAPPER (Hidden initially) -->
     <div id="mainApp" class="hidden flex-col flex-1 relative w-full h-full min-h-screen">
-        <header
-            class="bg-gradient-to-r from-brand-900 via-brand-800 to-brand-700 text-white shadow-lg sticky top-0 z-30">
+        <header class="bg-gradient-to-r from-brand-900 via-brand-800 to-brand-700 text-white shadow-lg sticky top-0 z-30">
             <div class="px-2 sm:px-4 py-2 sm:py-3 flex flex-nowrap items-center justify-between gap-2 sm:gap-4">
                 <!-- Left: Toggle Sidebar & School Brand -->
                 <div class="flex items-center gap-1.5 sm:gap-3 flex-1 min-w-0">
-                    <button id="sidebarToggleBtn" onclick="toggleSidebar()"
-                        class="p-1 sm:p-2 rounded-lg hover:bg-white/10 transition lg:hidden text-white shrink-0"
-                        title="Buka Sidebar Navigasi">
+                    <button id="sidebarToggleBtn" onclick="toggleSidebar()" class="p-1 sm:p-2 rounded-lg hover:bg-white/10 transition lg:hidden text-white shrink-0" title="Buka Sidebar Navigasi">
                         <i class="fa-solid fa-bars text-lg sm:text-xl"></i>
                     </button>
-                    <img id="headerSchoolLogo" src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
-                        alt="Logo Sekolah"
-                        class="w-7 h-7 sm:w-10 sm:h-10 object-contain bg-white rounded-full p-0.5 sm:p-1 shadow border border-white/30 shrink-0">
+                    <img id="headerSchoolLogo" src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Logo Sekolah" class="w-7 h-7 sm:w-10 sm:h-10 object-contain bg-white rounded-full p-0.5 sm:p-1 shadow border border-white/30 shrink-0">
                     <div class="min-w-0">
-                        <h1 id="headerSchoolName"
-                            class="font-bold text-xs sm:text-base md:text-lg leading-tight tracking-wide truncate">SMA
-                            Negeri 1 Edukasi</h1>
+                        <h1 id="headerSchoolName" class="font-bold text-xs sm:text-base md:text-lg leading-tight tracking-wide truncate">SMA Negeri 1 Edukasi</h1>
                         <p class="hidden sm:flex text-[11px] text-brand-100 items-center gap-1">
                             <i class="fa-solid fa-shield-halved text-emerald-400"></i> Sistem Administrasi Terpadu
                         </p>
@@ -267,28 +175,21 @@
                 </div>
 
                 <!-- Middle: Live Clock Widget -->
-                <div
-                    class="hidden md:flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-xs font-mono shadow-inner shrink-0">
+                <div class="hidden md:flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-xs font-mono shadow-inner shrink-0">
                     <i class="fa-regular fa-clock text-amber-300 animate-pulse"></i>
                     <span id="liveClockDisplay">Minggu, 26 Juli 2026 | 00:00:00 WIB</span>
                 </div>
 
                 <!-- Right: Identity Badge Guru & Logout -->
                 <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-                    <div class="flex items-center gap-2 sm:gap-3 bg-white/10 hover:bg-white/20 transition p-1 sm:p-1.5 sm:pr-4 rounded-full border border-white/20 cursor-pointer"
-                        onclick="switchModule('pengaturan')" title="Klik untuk edit profil">
-                        <img id="headerTeacherAvatar"
-                            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Foto Profil"
-                            class="w-7 h-7 sm:w-9 sm:h-9 rounded-full object-cover border-2 border-amber-400 shrink-0">
+                    <div class="flex items-center gap-2 sm:gap-3 bg-white/10 hover:bg-white/20 transition p-1 sm:p-1.5 sm:pr-4 rounded-full border border-white/20 cursor-pointer" onclick="switchModule('pengaturan')" title="Klik untuk edit profil">
+                        <img id="headerTeacherAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Foto Profil" class="w-7 h-7 sm:w-9 sm:h-9 rounded-full object-cover border-2 border-amber-400 shrink-0">
                         <div class="text-left hidden sm:block">
-                            <div id="headerTeacherName" class="font-semibold text-xs leading-none">Budi Santoso, S.Pd.
-                            </div>
+                            <div id="headerTeacherName" class="font-semibold text-xs leading-none">Budi Santoso, S.Pd.</div>
                             <div id="headerTeacherRole" class="text-[10px] text-brand-200 mt-1">Guru Mapel</div>
                         </div>
                     </div>
-                    <button onclick="handleLogout()"
-                        class="bg-rose-500 hover:bg-rose-600 text-white rounded-full transition shadow-md border border-rose-400 aspect-square w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-center text-xs sm:text-base shrink-0"
-                        title="Keluar / Logout">
+                    <button onclick="handleLogout()" class="bg-rose-500 hover:bg-rose-600 text-white rounded-full transition shadow-md border border-rose-400 aspect-square w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-center text-xs sm:text-base shrink-0" title="Keluar / Logout">
                         <i class="fa-solid fa-power-off"></i>
                     </button>
                 </div>
@@ -297,84 +198,61 @@
 
         <div class="flex flex-1 relative overflow-hidden">
             <!-- SIDEBAR NAVIGATION -->
-            <aside id="sidebar"
-                class="bg-slate-900 text-slate-300 w-64 space-y-1 py-4 px-2 absolute inset-y-0 left-0 transform -translate-x-full lg:relative lg:translate-x-0 transition duration-200 ease-in-out z-20 shadow-xl flex flex-col justify-between overflow-y-auto">
+            <aside id="sidebar" class="bg-slate-900 text-slate-300 w-64 space-y-1 py-4 px-2 absolute inset-y-0 left-0 transform -translate-x-full lg:relative lg:translate-x-0 transition duration-200 ease-in-out z-20 shadow-xl flex flex-col justify-between overflow-y-auto">
                 <div class="space-y-1">
-                    <div class="px-3 pb-2 text-[10px] font-bold text-slate-500 uppercase tracking-wider">Navigasi Utama
-                    </div>
-                    <div onclick="switchModule('dashboard')" id="nav-dashboard"
-                        class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition active-nav">
+                    <div class="px-3 pb-2 text-[10px] font-bold text-slate-500 uppercase tracking-wider">Navigasi Utama</div>
+                    <div onclick="switchModule('dashboard')" id="nav-dashboard" class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition active-nav">
                         <i class="fa-solid fa-chart-pie w-5 text-center text-amber-400"></i> Dashboard Utama
                     </div>
-                    <div onclick="switchModule('siswa')" id="nav-siswa"
-                        class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
+                    <div onclick="switchModule('siswa')" id="nav-siswa" class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
                         <i class="fa-solid fa-user-graduate w-5 text-center text-blue-400"></i> Data Siswa
                     </div>
-                    <div onclick="switchModule('jadwal')" id="nav-jadwal"
-                        class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
-                        <i class="fa-solid fa-calendar-days w-5 text-center text-purple-400"></i> Jadwal Mengajar
-                    </div>
-                    <div onclick="switchModule('mapel')" id="nav-mapel"
-                        class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
+                    <div onclick="switchModule('mapel')" id="nav-mapel" class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
                         <i class="fa-solid fa-book w-5 text-center text-emerald-400"></i> Master Mata Pelajaran
                     </div>
+                    <div onclick="switchModule('jadwal')" id="nav-jadwal" class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
+                        <i class="fa-solid fa-calendar-days w-5 text-center text-purple-400"></i> Jadwal Mengajar
+                    </div>
 
-                    <div class="px-3 pt-4 pb-1 text-[10px] font-bold text-slate-500 uppercase tracking-wider">Aktivitas
-                        KBM</div>
-                    <div onclick="switchModule('absensi')" id="nav-absensi"
-                        class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
+                    <div class="px-3 pt-4 pb-1 text-[10px] font-bold text-slate-500 uppercase tracking-wider">Aktivitas KBM</div>
+                    <div onclick="switchModule('absensi')" id="nav-absensi" class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
                         <i class="fa-solid fa-clipboard-user w-5 text-center text-teal-400"></i> Absensi Siswa
                     </div>
-                    <div onclick="switchModule('nilai')" id="nav-nilai"
-                        class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
+                    <div onclick="switchModule('nilai')" id="nav-nilai" class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
                         <i class="fa-solid fa-award w-5 text-center text-yellow-400"></i> Nilai Siswa
                     </div>
-                    <div onclick="switchModule('jurnal')" id="nav-jurnal"
-                        class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
+                    <div onclick="switchModule('jurnal')" id="nav-jurnal" class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
                         <i class="fa-solid fa-journal-whills w-5 text-center text-rose-400"></i> Jurnal Mengajar
                     </div>
-                    <div onclick="switchModule('tugas')" id="nav-tugas"
-                        class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
+                    <div onclick="switchModule('tugas')" id="nav-tugas" class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
                         <i class="fa-solid fa-list-check w-5 text-center text-sky-400"></i> Tugas Siswa
                     </div>
 
-                    <div id="header-manajemen"
-                        class="px-3 pt-4 pb-1 text-[10px] font-bold text-slate-500 uppercase tracking-wider">Manajemen &
-                        Operasional</div>
-                    <div onclick="switchModule('catatan')" id="nav-catatan"
-                        class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
+                    <div id="header-manajemen" class="px-3 pt-4 pb-1 text-[10px] font-bold text-slate-500 uppercase tracking-wider">Manajemen & Operasional</div>
+                    <div onclick="switchModule('catatan')" id="nav-catatan" class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
                         <i class="fa-solid fa-comments w-5 text-center text-indigo-400"></i> Catatan Konseling
                     </div>
-                    <div onclick="switchModule('piket')" id="nav-piket"
-                        class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
+                    <div onclick="switchModule('piket')" id="nav-piket" class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
                         <i class="fa-solid fa-user-shield w-5 text-center text-orange-400"></i> Jadwal Piket
                     </div>
-                    <div onclick="switchModule('refleksi')" id="nav-refleksi"
-                        class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
+                    <div onclick="switchModule('refleksi')" id="nav-refleksi" class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
                         <i class="fa-solid fa-lightbulb w-5 text-center text-amber-300"></i> Refleksi & Motivasi
                     </div>
-                    <div onclick="switchModule('inventaris')" id="nav-inventaris"
-                        class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
+                    <div onclick="switchModule('inventaris')" id="nav-inventaris" class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
                         <i class="fa-solid fa-boxes-packing w-5 text-center text-cyan-400"></i> Inventaris Kelas
                     </div>
-                    <div onclick="switchModule('rapor')" id="nav-rapor"
-                        class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
+                    <div onclick="switchModule('rapor')" id="nav-rapor" class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
                         <i class="fa-solid fa-file-invoice w-5 text-center text-emerald-400"></i> Cetak Rapor
                     </div>
 
-                    <div id="header-sistem"
-                        class="px-3 pt-4 pb-1 text-[10px] font-bold text-slate-500 uppercase tracking-wider">Sistem &
-                        Deploy</div>
-                    <div onclick="switchModule('admin_users')" id="nav-admin_users"
-                        class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition text-rose-300">
+                    <div id="header-sistem" class="px-3 pt-4 pb-1 text-[10px] font-bold text-slate-500 uppercase tracking-wider">Sistem & Deploy</div>
+                    <div onclick="switchModule('admin_users')" id="nav-admin_users" class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition text-rose-300">
                         <i class="fa-solid fa-users-gear w-5 text-center"></i> Pengaturan Akun
                     </div>
-                    <div onclick="switchModule('pengaturan')" id="nav-pengaturan"
-                        class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
+                    <div onclick="switchModule('pengaturan')" id="nav-pengaturan" class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-brand-600 hover:text-white transition">
                         <i class="fa-solid fa-sliders w-5 text-center text-slate-400"></i> Pengaturan Sistem
                     </div>
-                    <div onclick="switchModule('gascode')" id="nav-gascode"
-                        class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-emerald-600 hover:text-white text-emerald-400 transition bg-slate-800/90 my-2">
+                    <div onclick="switchModule('gascode')" id="nav-gascode" class="cursor-pointer nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-emerald-600 hover:text-white text-emerald-400 transition bg-slate-800/90 my-2">
                         <i class="fa-solid fa-code w-5 text-center"></i> Backend GAS
                     </div>
                 </div>
@@ -393,10 +271,8 @@
     </div>
 
     <!-- GLOBAL MODAL CONTAINER -->
-    <div id="globalModal"
-        class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4 overflow-y-auto">
-        <div
-            class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-fade-in border border-slate-200">
+    <div id="globalModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-fade-in border border-slate-200">
             <div class="bg-brand-800 text-white px-6 py-4 flex items-center justify-between">
                 <h3 id="modalTitle" class="font-bold text-sm sm:text-base flex items-center gap-2">
                     <i class="fa-solid fa-pen-to-square"></i> Form Input Data
@@ -409,10 +285,8 @@
                 <!-- Dynamic Modal Form Content -->
             </div>
             <div id="modalFooter" class="bg-slate-50 px-6 py-3 border-t border-slate-200 flex justify-end gap-2">
-                <button type="button" onclick="closeModal()"
-                    class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-medium rounded-xl transition">Batal</button>
-                <button type="button" id="modalSaveBtn" onclick="submitModalForm()"
-                    class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-medium rounded-xl transition shadow flex items-center gap-1.5">
+                <button type="button" onclick="closeModal()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-medium rounded-xl transition">Batal</button>
+                <button type="button" id="modalSaveBtn" onclick="submitModalForm()" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-medium rounded-xl transition shadow flex items-center gap-1.5">
                     <i class="fa-solid fa-floppy-disk"></i> Simpan Data
                 </button>
             </div>
@@ -420,8 +294,7 @@
     </div>
 
     <!-- QR SCANNER OVERLAY MODAL -->
-    <div id="qrScannerModal"
-        class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+    <div id="qrScannerModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 text-center space-y-4">
             <div class="flex items-center justify-between border-b pb-3">
                 <h3 class="font-bold text-slate-800 flex items-center gap-2 text-sm">
@@ -431,16 +304,11 @@
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
-            <div id="qr-reader"
-                class="w-full bg-slate-100 rounded-xl overflow-hidden border min-h-[250px] flex items-center justify-center">
-                <div class="text-slate-400 text-sm"><i
-                        class="fa-solid fa-camera animate-pulse text-2xl mb-2"></i><br>Menyiapkan Kamera...</div>
+            <div id="qr-reader" class="w-full bg-slate-100 rounded-xl overflow-hidden border min-h-[250px] flex items-center justify-center">
+                <div class="text-slate-400 text-sm"><i class="fa-solid fa-camera animate-pulse text-2xl mb-2"></i><br>Menyiapkan Kamera...</div>
             </div>
-            <p id="qrScanStatus" class="text-xs text-slate-500 font-medium">Arahkan kamera ke QR Code NISN Kartu Siswa
-            </p>
-            <button type="button" onclick="stopQrScanner()"
-                class="w-full py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-medium rounded-xl transition">Tutup
-                Kamera</button>
+            <p id="qrScanStatus" class="text-xs text-slate-500 font-medium">Arahkan kamera ke QR Code NISN Kartu Siswa</p>
+            <button type="button" onclick="stopQrScanner()" class="w-full py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-medium rounded-xl transition">Tutup Kamera</button>
         </div>
     </div>
 
@@ -510,7 +378,7 @@
         let currentEditingId = null;
         let html5QrCode = null;
         let currentAdminRoleFilter = '';
-        let currentAdminUserSearch = '';
+        let currentAdminUserSearch = ''; 
         let currentUser = null;
         let currentLoginRole = 'Guru';
         let tempStudentUploadedPhoto = null;
@@ -518,9 +386,9 @@
         let tempTeacherPhoto = null;
 
         let activeTA = '2024/2025';
-        let activeMapelValue = '';
-        let activeSiswaKelasFilter = '';
-        let activeSiswaTAFilter = '';
+        let activeMapelValue = ''; 
+        let activeSiswaKelasFilter = ''; 
+        let activeSiswaTAFilter = '2024/2025';
 
         function loadLocalFallback() {
             try {
@@ -539,9 +407,12 @@
                 if (localStorage.getItem('siags_inventaris')) db.inventaris = JSON.parse(localStorage.getItem('siags_inventaris'));
                 if (localStorage.getItem('siags_raporCatatan')) db.raporCatatan = JSON.parse(localStorage.getItem('siags_raporCatatan'));
                 if (localStorage.getItem('siags_kolomNilai')) db.kolomNilai = JSON.parse(localStorage.getItem('siags_kolomNilai'));
-
+                
                 currentUser = JSON.parse(localStorage.getItem('siags_loggedInUser')) || null;
-                if (db.pengaturan.ta) activeTA = db.pengaturan.ta;
+                if (db.pengaturan.ta) {
+                    activeTA = db.pengaturan.ta;
+                    activeSiswaTAFilter = activeTA;
+                }
             } catch (e) {
                 console.warn('LocalStorage diblokir atau tidak tersedia.');
             }
@@ -552,9 +423,9 @@
 
         async function initializeApp() {
             const loginBtn = document.querySelector('button[onclick="handleUnifiedLogin(event)"]');
-            if (loginBtn) {
-                loginBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Menghubungkan Database...';
-                loginBtn.disabled = true;
+            if(loginBtn) { 
+                loginBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Menghubungkan Database...'; 
+                loginBtn.disabled = true; 
             }
 
             try {
@@ -567,8 +438,8 @@
 
                 const response = await fetch(GAS_API_URL);
                 const serverData = await response.json();
-
-                if (serverData) {
+                
+                if(serverData) {
                     Object.keys(serverData).forEach(key => {
                         if (serverData[key] && serverData[key].length > 0) {
                             if (key === 'pengaturan') db[key] = serverData[key][0] || DEFAULT_SETTINGS;
@@ -587,20 +458,23 @@
 
         function finalizeInit() {
             const loginBtn = document.querySelector('button[onclick="handleUnifiedLogin(event)"]');
-            if (loginBtn) {
-                loginBtn.innerHTML = 'Masuk ke Sistem <i class="fa-solid fa-right-to-bracket"></i>';
-                loginBtn.disabled = false;
+            if(loginBtn) { 
+                loginBtn.innerHTML = 'Masuk ke Sistem <i class="fa-solid fa-right-to-bracket"></i>'; 
+                loginBtn.disabled = false; 
             }
-            if (db.pengaturan && db.pengaturan.ta) activeTA = db.pengaturan.ta;
-
+            if (db.pengaturan && db.pengaturan.ta) {
+                activeTA = db.pengaturan.ta;
+                activeSiswaTAFilter = activeTA;
+            }
+            
             try {
                 currentUser = JSON.parse(localStorage.getItem('siags_loggedInUser')) || null;
                 if (currentUser && !db.users.find(u => u.id === currentUser.id)) {
                     currentUser = null;
                     localStorage.removeItem('siags_loggedInUser');
                 }
-            } catch (e) { }
-
+            } catch(e) {}
+            
             checkAuth();
         }
 
@@ -620,7 +494,7 @@
             } catch (e) {
                 console.warn('Gagal menyimpan ke LocalStorage.');
             }
-
+            
             if (GAS_API_URL === 'GANTI_DENGAN_URL_WEB_APP_GAS_ANDA' || GAS_API_URL === '') return;
 
             try {
@@ -655,7 +529,7 @@
                 gain.connect(ctx.destination);
                 osc.start();
                 osc.stop(ctx.currentTime + 0.15);
-            } catch (e) { }
+            } catch (e) {}
         }
 
         function notifySuccess(msg) {
@@ -683,7 +557,7 @@
         function toggleAuthMode() {
             const loginContainer = document.getElementById('loginContainer');
             const registerContainer = document.getElementById('registerContainer');
-
+            
             if (loginContainer && registerContainer) {
                 if (loginContainer.classList.contains('hidden')) {
                     loginContainer.classList.remove('hidden');
@@ -698,7 +572,7 @@
         function setLoginRole(role) {
             currentLoginRole = role;
             const tabs = ['Admin', 'Guru', 'Siswa'];
-
+            
             tabs.forEach(t => {
                 const el = document.getElementById('tabLogin' + t);
                 if (el) {
@@ -714,17 +588,17 @@
         function checkAuth() {
             const loginScreen = document.getElementById('loginScreen');
             const mainApp = document.getElementById('mainApp');
-
+            
             if (currentUser) {
-                if (loginScreen) loginScreen.classList.add('hidden');
-                if (mainApp) {
+                if(loginScreen) loginScreen.classList.add('hidden');
+                if(mainApp) {
                     mainApp.classList.remove('hidden');
                     mainApp.classList.add('flex');
                 }
-
+                
                 updateHeaderUI();
                 renderModuleContent('dashboard');
-
+                
                 const roleEl = document.getElementById('headerTeacherRole');
                 if (roleEl) roleEl.textContent = currentUser.role;
                 const nameEl = document.getElementById('headerTeacherName');
@@ -774,7 +648,7 @@
                     if (currentUser.role === 'Siswa') headerManajemen.classList.add('hidden');
                     else headerManajemen.classList.remove('hidden');
                 }
-
+                
                 const headerSistem = document.getElementById('header-sistem');
                 if (headerSistem) {
                     if (currentUser.role === 'Siswa' || currentUser.role === 'Guru Mapel') headerSistem.classList.add('hidden');
@@ -782,8 +656,8 @@
                 }
 
             } else {
-                if (loginScreen) loginScreen.classList.remove('hidden');
-                if (mainApp) {
+                if(loginScreen) loginScreen.classList.remove('hidden');
+                if(mainApp) {
                     mainApp.classList.add('hidden');
                     mainApp.classList.remove('flex');
                 }
@@ -792,7 +666,7 @@
 
         function handleRegister(e) {
             if (e && e.preventDefault) e.preventDefault();
-
+            
             const regNama = document.getElementById('regNama').value;
             const regEmail = document.getElementById('regEmail').value;
             const regPassword = document.getElementById('regPassword').value;
@@ -870,8 +744,8 @@
                     document.getElementById('regEmail').value = '';
                     document.getElementById('regPassword').value = '';
                     document.getElementById('regKelas').value = '';
-
-                    if (!document.getElementById('registerContainer').classList.contains('hidden')) {
+                    
+                    if(!document.getElementById('registerContainer').classList.contains('hidden')) {
                         toggleAuthMode();
                     }
                 });
@@ -894,7 +768,7 @@
                     cancelButtonText: 'Tutup',
                     confirmButtonColor: '#10b981',
                 }).then((res) => {
-                    if (res.isConfirmed) {
+                    if(res.isConfirmed) {
                         verifyEmailSimulation(user.id);
                     }
                 });
@@ -907,8 +781,8 @@
             currentUser = user;
             try {
                 localStorage.setItem('siags_loggedInUser', JSON.stringify(user));
-            } catch (e) { }
-
+            } catch(e) {}
+            
             user.lastLogin = new Date().toISOString().split('T')[0];
             saveDb('users');
             checkAuth();
@@ -917,14 +791,14 @@
 
         function handleUnifiedLogin(e) {
             if (e && e.preventDefault) e.preventDefault();
-
+            
             const email = document.getElementById('loginEmail').value;
             const pass = document.getElementById('loginPass').value;
-
-            if (!email || !pass) return notifyError('Harap isi Email dan Password!');
+            
+            if(!email || !pass) return notifyError('Harap isi Email dan Password!');
 
             const user = db.users.find(u => u.email === email && u.password === pass);
-
+            
             if (user) {
                 const isAdmin = user.role === 'Admin Sistem';
                 const isGuru = user.role === 'Guru Mapel';
@@ -960,7 +834,7 @@
                     currentUser = null;
                     try {
                         localStorage.removeItem('siags_loggedInUser');
-                    } catch (e) { }
+                    } catch (e) {}
                     document.getElementById('loginEmail').value = '';
                     document.getElementById('loginPass').value = '';
                     checkAuth();
@@ -984,7 +858,7 @@
         function updateHeaderUI() {
             document.getElementById('headerSchoolLogo').src = db.pengaturan.logo;
             document.getElementById('headerSchoolName').textContent = db.pengaturan.sekolah;
-
+            
             const avatarEl = document.getElementById('headerTeacherAvatar');
             if (currentUser && currentUser.role === 'Siswa') {
                 avatarEl.src = currentUser.foto || 'https://placehold.co/150x150/eff6ff/1d4ed8?text=' + currentUser.nama.charAt(0);
@@ -1006,7 +880,7 @@
                     activeMapelValue = availableMapel.length > 0 ? `${availableMapel[0].nama} - ${availableMapel[0].kelas}` : '';
                 }
             }
-
+            
             const [mapelNama, kelasNama] = activeMapelValue ? activeMapelValue.split(' - ') : ['', ''];
             return { ta: activeTA, mapel: mapelNama || '', kelas: kelasNama || '' };
         }
@@ -1015,13 +889,20 @@
             const isSiswa = currentUser && currentUser.role === 'Siswa';
             const availableMapel = isSiswa ? db.mapel.filter(m => m.kelas === currentUser.kelas) : db.mapel;
 
-            let mapelOptions = availableMapel.length === 0
+            let mapelOptions = availableMapel.length === 0 
                 ? '<option value="">(Belum Ada Mapel)</option>'
                 : availableMapel.map(m => {
                     const val = `${m.nama} - ${m.kelas}`;
                     const selected = activeMapelValue === val ? 'selected' : '';
                     return `<option value="${val}" ${selected}>${m.nama} (${m.kelas})</option>`;
                 }).join('');
+
+            // Membuat Filter TA Global Dinamis berdasarkan data siswa
+            let uniqueTAs = [...new Set(db.siswa.map(s => s.ta))].filter(Boolean).sort();
+            if (uniqueTAs.length === 0) uniqueTAs = [activeTA || '2024/2025'];
+            if (activeTA && !uniqueTAs.includes(activeTA)) activeTA = uniqueTAs[0]; // Reset jika TA tidak valid
+            
+            let taOptions = uniqueTAs.map(ta => `<option value="${ta}" ${activeTA === ta ? 'selected' : ''}>${ta}</option>`).join('');
 
             return `
                 <div class="flex flex-nowrap items-center gap-1.5 sm:gap-2.5 bg-slate-50 p-1.5 sm:p-3 rounded-xl sm:rounded-2xl border border-slate-200 shadow-sm mb-2 overflow-x-auto w-full">
@@ -1031,7 +912,7 @@
                     <div class="flex-1 flex items-center gap-1 sm:gap-1.5 bg-white border border-slate-300 rounded-lg px-1.5 py-1 sm:px-2.5 sm:py-1.5 text-slate-700 shadow-sm min-w-0">
                         <i class="fa-regular fa-calendar-days text-brand-500 shrink-0 text-[10px] sm:text-xs"></i>
                         <select onchange="updateLocalFilter('ta', this.value)" class="bg-transparent text-[10px] sm:text-xs font-medium focus:outline-none cursor-pointer w-full truncate">
-                            <option value="2026/2027" ${activeTA === '2026/2027' ? 'selected' : ''}>2026/2027</option>
+                            ${taOptions}
                         </select>
                     </div>
                     <div class="flex-1 flex items-center gap-1 sm:gap-1.5 bg-white border border-slate-300 rounded-lg px-1.5 py-1 sm:px-2.5 sm:py-1.5 text-slate-700 shadow-sm min-w-0">
@@ -1045,7 +926,10 @@
         }
 
         function updateLocalFilter(type, value) {
-            if (type === 'ta') activeTA = value;
+            if (type === 'ta') {
+                activeTA = value;
+                activeSiswaTAFilter = value;
+            }
             if (type === 'mapel') activeMapelValue = value;
             renderModuleContent(currentActiveModule);
         }
@@ -1057,15 +941,34 @@
 
         function updateSiswaTAFilter(val) {
             activeSiswaTAFilter = val;
+            if (val !== '') {
+                activeTA = val;
+            }
             renderModuleContent('siswa');
         }
 
-        window.onload = function () {
+        // Fungsi Validasi & Reset Filter jika Data Kosong
+        function validateFiltersSiswa() {
+            const uniqueClasses = [...new Set(db.siswa.map(s => s.kelas))].filter(Boolean);
+            const uniqueTAs = [...new Set(db.siswa.map(s => s.ta))].filter(Boolean);
+            
+            if (activeSiswaKelasFilter && !uniqueClasses.includes(activeSiswaKelasFilter)) {
+                activeSiswaKelasFilter = ''; // Reset ke 'Semua Kelas' jika kelas sudah tidak ada
+            }
+            if (activeSiswaTAFilter && !uniqueTAs.includes(activeSiswaTAFilter)) {
+                activeSiswaTAFilter = ''; // Reset ke 'Semua TA' jika TA sudah tidak ada
+            }
+            if (activeTA && !uniqueTAs.includes(activeTA) && uniqueTAs.length > 0) {
+                activeTA = uniqueTAs[0];
+            }
+        }
+
+        window.onload = function() {
             startLiveClock();
-            initializeApp();
+            initializeApp(); 
         };
 
-        document.addEventListener('click', function (event) {
+        document.addEventListener('click', function(event) {
             const sidebar = document.getElementById('sidebar');
             const toggleBtn = document.getElementById('sidebarToggleBtn');
             if (window.innerWidth < 1024 && !sidebar.classList.contains('-translate-x-full')) {
@@ -1077,7 +980,7 @@
 
         function switchModule(modKey) {
             currentActiveModule = modKey;
-
+            
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('bg-brand-600', 'text-white', 'shadow'));
             const activeNav = document.getElementById('nav-' + modKey);
             if (activeNav) activeNav.classList.add('bg-brand-600', 'text-white', 'shadow');
@@ -1099,11 +1002,11 @@
                 case 'siswa': renderSiswaView(container, filter); break;
                 case 'jadwal': renderJadwalView(container); break;
                 case 'mapel': renderMapelView(container); break;
-                case 'absensi':
+                case 'absensi': 
                     if (currentUser && currentUser.role === 'Siswa') {
                         renderRekapDetailAbsensiView();
                     } else {
-                        renderAbsensiView(container, filter);
+                        renderAbsensiView(container, filter); 
                     }
                     break;
                 case 'nilai': renderNilaiView(container, filter); break;
@@ -1218,7 +1121,7 @@
                                 </h3>
                                 <div class="space-y-3">
                                     ${db.jadwal.length === 0 ? `<p class="text-xs text-slate-400 italic">Belum ada jadwal mengajar.</p>` :
-                    db.jadwal.map(j => `
+                                      db.jadwal.map(j => `
                                         <div class="p-3 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-between">
                                             <div>
                                                 <div class="font-bold text-xs text-slate-800">${j.mapel} (${j.kelas})</div>
@@ -1259,9 +1162,8 @@
         function renderSiswaView(container, filter) {
             const uniqueClasses = [...new Set(db.siswa.map(s => s.kelas))].filter(Boolean).sort();
             const uniqueTAs = [...new Set(db.siswa.map(s => s.ta))].filter(Boolean).sort();
-            if (uniqueTAs.length === 0) uniqueTAs.push(activeTA);
 
-            const filtered = db.siswa.filter(s =>
+            const filtered = db.siswa.filter(s => 
                 (!activeSiswaKelasFilter || s.kelas === activeSiswaKelasFilter) &&
                 (!activeSiswaTAFilter || s.ta === activeSiswaTAFilter)
             );
@@ -1317,8 +1219,8 @@
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100">
-                                    ${filtered.length === 0 ? `<tr><td colspan="${!isSiswa ? 9 : 4}" class="p-6 text-center text-slate-400">Tidak ada data siswa ditemukan</td></tr>` :
-                    filtered.map(s => `
+                                    ${filtered.length === 0 ? `<tr><td colspan="${!isSiswa ? 9 : 4}" class="p-6 text-center text-slate-400">Tidak ada data siswa ditemukan</td></tr>` : 
+                                      filtered.map(s => `
                                         <tr class="hover:bg-slate-50 transition">
                                             ${!isSiswa ? `<td class="p-3 text-center"><input type="checkbox" class="siswa-checkbox w-3.5 h-3.5 cursor-pointer rounded border-slate-300 outline-none focus:ring-brand-500 text-brand-600" value="${s.id}" onchange="updateBulkDeleteSiswaBtn()"></td><td class="p-3 font-mono font-medium text-brand-600">${s.nisn}</td>` : ''}
                                             <td class="p-3 font-semibold text-slate-800">${s.nama}</td>
@@ -1426,6 +1328,7 @@
                 if (res.isConfirmed) {
                     db.siswa = db.siswa.filter(s => s.id !== id);
                     saveDb('siswa');
+                    validateFiltersSiswa(); // Memvalidasi filter aktif
                     notifySuccess('Data siswa berhasil dihapus!');
                     renderModuleContent('siswa');
                 }
@@ -1478,6 +1381,7 @@
                 if (res.isConfirmed) {
                     db.siswa = db.siswa.filter(s => !idsToDelete.includes(s.id));
                     saveDb('siswa');
+                    validateFiltersSiswa(); // Memvalidasi filter aktif
                     notifySuccess(idsToDelete.length + ' data siswa berhasil dihapus!');
                     renderModuleContent('siswa');
                 }
@@ -1490,7 +1394,7 @@
                 { "NISN": "0012345679", "Nama": "Siti Contoh", "Kelas": "X-A", "Tahun Pembelajaran": "2024/2025", "JK": "P", "Ortu": "081234567891" }
             ];
             const ws = XLSX.utils.json_to_sheet(templateData);
-            ws['!cols'] = [{ wch: 15 }, { wch: 30 }, { wch: 10 }, { wch: 22 }, { wch: 5 }, { wch: 15 }];
+            ws['!cols'] = [ { wch: 15 }, { wch: 30 }, { wch: 10 }, { wch: 22 }, { wch: 5 }, { wch: 15 } ];
             const wb = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(wb, ws, "Template_Siswa");
             XLSX.writeFile(wb, "Template_Import_Siswa.xlsx");
@@ -1502,7 +1406,7 @@
             if (!file) return;
 
             const reader = new FileReader();
-            reader.onload = function (evt) {
+            reader.onload = function(evt) {
                 const data = new Uint8Array(evt.target.result);
                 const workbook = XLSX.read(data, { type: 'array' });
                 const worksheet = workbook.Sheets[workbook.SheetNames[0]];
@@ -1576,7 +1480,7 @@
                         margin: 0,
                         filename: `Kartu_QR_${nama.replace(/\s+/g, '_')}.pdf`,
                         image: { type: 'jpeg', quality: 1 },
-                        html2canvas: { scale: 4, useCORS: true },
+                        html2canvas: { scale: 4, useCORS: true }, 
                         jsPDF: { unit: 'mm', format: [65, 105], orientation: 'portrait' }
                     }).from(el).save();
                 }
@@ -1603,8 +1507,8 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         ${days.map(day => {
-                const list = db.jadwal.filter(j => j.hari === day && (!isSiswa || j.kelas === currentUser.kelas));
-                return `
+                            const list = db.jadwal.filter(j => j.hari === day && (!isSiswa || j.kelas === currentUser.kelas));
+                            return `
                                 <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 space-y-3">
                                     <div class="flex items-center justify-between border-b pb-2">
                                         <h3 class="font-bold text-sm text-brand-700 flex items-center gap-2">
@@ -1614,7 +1518,7 @@
                                     </div>
                                     <div class="space-y-2">
                                         ${list.length === 0 ? `<p class="text-xs text-slate-400 italic py-2">Tidak ada jadwal ${isSiswa ? 'pelajaran' : 'mengajar'}</p>` :
-                        list.map(j => `
+                                          list.map(j => `
                                             <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between">
                                                 <div>
                                                     <div class="font-bold text-xs text-slate-800">${j.mapel}</div>
@@ -1632,7 +1536,7 @@
                                     </div>
                                 </div>
                             `;
-            }).join('')}
+                        }).join('')}
                     </div>
                 </div>
             `;
@@ -1647,6 +1551,12 @@
 
             const hariOptions = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu']
                 .map(h => `<option value="${h}" ${data && data.hari === h ? 'selected' : ''}>${h}</option>`).join('');
+
+            // MENGAMBIL NAMA MAPEL UNIK DARI DATABASE MASTER MAPEL
+            const uniqueMapels = [...new Set(db.mapel.map(m => m.nama))].filter(Boolean).sort();
+            const defaultMapel = data ? data.mapel : (getActiveGlobalFilter().mapel || '');
+            let mapelOptions = uniqueMapels.map(mName => `<option value="${mName}" ${defaultMapel === mName ? 'selected' : ''}>${mName}</option>`).join('');
+            if (uniqueMapels.length === 0) mapelOptions = `<option value="">-- Belum ada data mapel --</option>`;
 
             document.getElementById('modalTitle').innerHTML = `<i class="fa-solid fa-calendar-${data ? 'check' : 'plus'}"></i> ${data ? 'Edit Jadwal Mengajar' : 'Tambah Jadwal Mengajar'}`;
             document.getElementById('modalBody').innerHTML = `
@@ -1682,7 +1592,9 @@
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Mata Pelajaran</label>
-                            <input type="text" id="mJadwalMapel" value="${data ? data.mapel : (getActiveGlobalFilter().mapel || 'Matematika')}" required class="w-full px-3 py-2 border rounded-xl text-xs outline-none">
+                            <select id="mJadwalMapel" required class="w-full px-3 py-2 border rounded-xl text-xs outline-none cursor-pointer">
+                                ${mapelOptions}
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -1710,7 +1622,7 @@
             } else {
                 db.jadwal.push({ id: 'J' + Date.now(), hari, jamKe, waktu, ruang, kelas, mapel });
             }
-
+            
             saveDb('jadwal');
             closeModal();
             notifySuccess(`Jadwal mengajar berhasil ${currentEditingId ? 'diperbarui' : 'ditambahkan'}!`);
@@ -1780,7 +1692,7 @@
 
         function openModalMapel(data = null) {
             currentEditingId = data ? data.id : null;
-
+            
             const uniqueClasses = [...new Set([...db.siswa.map(s => s.kelas), ...db.mapel.map(m => m.kelas)])].filter(Boolean).sort();
             let classOptions = uniqueClasses.map(c => `<option value="${c}" ${data && data.kelas === c ? 'selected' : ''}>${c}</option>`).join('');
             if (uniqueClasses.length === 0) classOptions = `<option value="">-- Belum ada data kelas --</option>`;
@@ -1838,6 +1750,11 @@
             closeModal();
             notifySuccess('Mata pelajaran berhasil disimpan!');
             renderModuleContent('mapel');
+        }
+
+        function editMapel(id) {
+            const item = db.mapel.find(m => m.id === id);
+            if (item) openModalMapel(item);
         }
 
         function deleteMapel(id) {
@@ -1908,16 +1825,16 @@
                                 </thead>
                                 <tbody class="divide-y divide-slate-100">
                                     ${siswaKelas.length === 0 ? `<tr><td colspan="4" class="p-6 text-center text-slate-400">Tidak ada siswa untuk kelas ini</td></tr>` :
-                    siswaKelas.map((s, idx) => {
-                        const records = db.absensi.filter(a => a.siswaId === s.id && (!filter.mapel || a.mapel === filter.mapel));
-                        const recSelectedDate = records.find(a => a.tanggal === selectedAbsensiDate);
-                        const curStatus = recSelectedDate ? recSelectedDate.status : 'Hadir';
+                                      siswaKelas.map((s, idx) => {
+                                        const records = db.absensi.filter(a => a.siswaId === s.id && (!filter.mapel || a.mapel === filter.mapel));
+                                        const recSelectedDate = records.find(a => a.tanggal === selectedAbsensiDate);
+                                        const curStatus = recSelectedDate ? recSelectedDate.status : 'Hadir';
 
-                        const totalMeetings = records.length || 1;
-                        const countH = records.filter(a => a.status === 'Hadir').length;
-                        const persenIndividual = records.length === 0 ? 100 : Math.round((countH / totalMeetings) * 100);
+                                        const totalMeetings = records.length || 1;
+                                        const countH = records.filter(a => a.status === 'Hadir').length;
+                                        const persenIndividual = records.length === 0 ? 100 : Math.round((countH / totalMeetings) * 100);
 
-                        return `
+                                        return `
                                             <tr class="hover:bg-slate-50 transition">
                                                 <td class="p-3 text-slate-400">${idx + 1}</td>
                                                 <td class="p-3 font-semibold text-slate-800">${s.nama}</td>
@@ -1926,14 +1843,14 @@
                                                     <div class="inline-flex rounded-xl bg-slate-100 p-1 border gap-1 shadow-inner">
                                                         ${['Hadir', 'Sakit', 'Izin', 'Alpa', 'Dispensasi'].map(st => `
                                                             <button onclick="setAbsenStatus('${s.id}', '${st}')" class="px-2 py-0.5 text-[10px] font-bold rounded-lg transition ${curStatus === st ? getStatusBadgeClass(st) : 'text-slate-500 hover:text-slate-800'}">
-                                                                ${st.substring(0, 1)}
+                                                                ${st.substring(0,1)}
                                                             </button>
                                                         `).join('')}
                                                     </div>
                                                 </td>
                                             </tr>
                                         `;
-                    }).join('')}
+                                      }).join('')}
                                 </tbody>
                             </table>
                         </div>
@@ -1947,7 +1864,7 @@
             const filter = getActiveGlobalFilter();
             const isSiswa = currentUser && currentUser.role === 'Siswa';
             const siswaKelas = db.siswa.filter(s => s.kelas === filter.kelas || !filter.kelas);
-
+            
             const records = db.absensi.filter(a => (!filter.mapel || a.mapel === filter.mapel) && (!filter.kelas || a.kelas === filter.kelas));
             const uniqueDates = [...new Set(records.map(a => a.tanggal))].sort();
 
@@ -1999,10 +1916,10 @@
                                         <th class="p-3 sticky-col-1 border-r">No</th>
                                         <th class="p-3 sticky-col-2 border-r min-w-[150px]">Nama Siswa</th>
                                         ${uniqueDates.length === 0 ? `<th class="p-3 text-center">Belum ada data pertemuan</th>` : uniqueDates.map(date => {
-                const d = new Date(date);
-                const dateStr = d.toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit' });
-                return `<th class="p-3 text-center border-r" title="${date}">${dateStr}</th>`;
-            }).join('')}
+                                            const d = new Date(date);
+                                            const dateStr = d.toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit' });
+                                            return `<th class="p-3 text-center border-r" title="${date}">${dateStr}</th>`;
+                                        }).join('')}
                                         <th class="p-3 text-center font-bold text-emerald-700 bg-emerald-50 border-l" title="Total Hadir">Tot H</th>
                                         <th class="p-3 text-center font-bold text-blue-700 bg-blue-50" title="Total Sakit">Tot S</th>
                                         <th class="p-3 text-center font-bold text-purple-700 bg-purple-50" title="Total Izin">Tot I</th>
@@ -2012,29 +1929,29 @@
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100">
-                                    ${siswaKelas.length === 0 ? `<tr><td colspan="${uniqueDates.length + 8}" class="p-6 text-center text-slate-400">Tidak ada siswa</td></tr>` :
-                    siswaKelas.map((s, idx) => {
-                        let totalHadir = 0, totalSakit = 0, totalIzin = 0, totalAlpa = 0, totalDispensasi = 0;
+                                    ${siswaKelas.length === 0 ? `<tr><td colspan="${uniqueDates.length + 8}" class="p-6 text-center text-slate-400">Tidak ada siswa</td></tr>` : 
+                                      siswaKelas.map((s, idx) => {
+                                        let totalHadir = 0, totalSakit = 0, totalIzin = 0, totalAlpa = 0, totalDispensasi = 0;
+                                        
+                                        const datesHtml = uniqueDates.length === 0 ? `<td class="p-3 text-center">-</td>` : uniqueDates.map(date => {
+                                            const rec = records.find(a => a.siswaId === s.id && a.tanggal === date);
+                                            const status = rec ? rec.status : '-';
+                                            let initial = '-';
+                                            let style = 'text-slate-300';
+                                            
+                                            if (status === 'Hadir') { initial = 'H'; style = 'text-emerald-600 font-bold bg-emerald-50/30'; totalHadir++; }
+                                            else if (status === 'Sakit') { initial = 'S'; style = 'text-blue-600 font-bold bg-blue-50/30'; totalSakit++; }
+                                            else if (status === 'Izin') { initial = 'I'; style = 'text-purple-600 font-bold bg-purple-50/30'; totalIzin++; }
+                                            else if (status === 'Alpa') { initial = 'A'; style = 'text-rose-600 font-bold bg-rose-50/30'; totalAlpa++; }
+                                            else if (status === 'Dispensasi') { initial = 'D'; style = 'text-amber-600 font-bold bg-amber-50/30'; totalDispensasi++; }
 
-                        const datesHtml = uniqueDates.length === 0 ? `<td class="p-3 text-center">-</td>` : uniqueDates.map(date => {
-                            const rec = records.find(a => a.siswaId === s.id && a.tanggal === date);
-                            const status = rec ? rec.status : '-';
-                            let initial = '-';
-                            let style = 'text-slate-300';
+                                            return `<td class="p-3 text-center border-r ${style}">${initial}</td>`;
+                                        }).join('');
+                                        
+                                        const totalMeetings = uniqueDates.length || 1;
+                                        const persen = uniqueDates.length === 0 ? 100 : Math.round((totalHadir / totalMeetings) * 100);
 
-                            if (status === 'Hadir') { initial = 'H'; style = 'text-emerald-600 font-bold bg-emerald-50/30'; totalHadir++; }
-                            else if (status === 'Sakit') { initial = 'S'; style = 'text-blue-600 font-bold bg-blue-50/30'; totalSakit++; }
-                            else if (status === 'Izin') { initial = 'I'; style = 'text-purple-600 font-bold bg-purple-50/30'; totalIzin++; }
-                            else if (status === 'Alpa') { initial = 'A'; style = 'text-rose-600 font-bold bg-rose-50/30'; totalAlpa++; }
-                            else if (status === 'Dispensasi') { initial = 'D'; style = 'text-amber-600 font-bold bg-amber-50/30'; totalDispensasi++; }
-
-                            return `<td class="p-3 text-center border-r ${style}">${initial}</td>`;
-                        }).join('');
-
-                        const totalMeetings = uniqueDates.length || 1;
-                        const persen = uniqueDates.length === 0 ? 100 : Math.round((totalHadir / totalMeetings) * 100);
-
-                        return `
+                                        return `
                                         <tr class="hover:bg-slate-50 transition group">
                                             <td class="p-3 sticky-col-1 group-hover:bg-slate-50 text-slate-400 border-r">${idx + 1}</td>
                                             <td class="p-3 sticky-col-2 group-hover:bg-slate-50 font-semibold text-slate-800 border-r">${s.nama}</td>
@@ -2047,7 +1964,7 @@
                                             <td class="p-3 text-center font-bold ${persen < 75 ? 'text-rose-600' : 'text-brand-700'} bg-brand-50/80 sticky right-0 shadow-[-4px_0_6px_-1px_rgba(0,0,0,0.05)]">${persen}%</td>
                                         </tr>
                                         `;
-                    }).join('')}
+                                    }).join('')}
                                 </tbody>
                             </table>
                         </div>
@@ -2069,7 +1986,7 @@
         }
 
         function getStatusBadgeClass(st) {
-            switch (st) {
+            switch(st) {
                 case 'Hadir': return 'bg-emerald-500 text-white shadow';
                 case 'Sakit': return 'bg-blue-500 text-white shadow';
                 case 'Izin': return 'bg-purple-500 text-white shadow';
@@ -2096,21 +2013,21 @@
             const statusEl = document.getElementById('qrScanStatus');
             statusEl.textContent = "Meminta akses kamera... (Izinkan di popup browser)";
             statusEl.classList.remove('text-rose-500');
-
+            
             if (!html5QrCode) {
                 html5QrCode = new Html5Qrcode("qr-reader");
             }
-
-            const config = {
-                fps: 10,
-                qrbox: function (viewfinderWidth, viewfinderHeight) {
+            
+            const config = { 
+                fps: 10, 
+                qrbox: function(viewfinderWidth, viewfinderHeight) {
                     let minEdgePercentage = 0.6;
                     let minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
                     let qrboxSize = Math.floor(minEdgeSize * minEdgePercentage);
                     return { width: qrboxSize, height: qrboxSize };
                 }
             };
-
+            
             const onScanSuccess = (decodedText) => {
                 const siswa = db.siswa.find(s => s.nisn === decodedText);
                 if (siswa) {
@@ -2129,7 +2046,7 @@
             };
 
             html5QrCode.start(
-                { facingMode: { exact: "environment" } },
+                { facingMode: { exact: "environment" } }, 
                 config,
                 onScanSuccess,
                 (errorMessage) => { }
@@ -2140,7 +2057,7 @@
                     { facingMode: "environment" },
                     config,
                     onScanSuccess,
-                    (errorMessage) => { }
+                    (errorMessage) => {}
                 ).then(() => {
                     statusEl.textContent = "Kamera aktif. Arahkan ke QR Code.";
                 }).catch((err2) => {
@@ -2164,7 +2081,7 @@
         function copyAbsensiHarianText() {
             const filter = getActiveGlobalFilter();
             const siswaKelas = db.siswa.filter(s => s.kelas === filter.kelas || !filter.kelas);
-
+            
             if (siswaKelas.length === 0) {
                 return notifyError('Tidak ada data siswa untuk disalin.');
             }
@@ -2180,7 +2097,7 @@
                 const records = db.absensi.filter(a => a.siswaId === s.id && (!filter.mapel || a.mapel === filter.mapel));
                 const recSelectedDate = records.find(a => a.tanggal === selectedAbsensiDate);
                 const status = recSelectedDate ? recSelectedDate.status : 'Hadir';
-
+                
                 textToCopy += `${idx + 1}. ${s.nama} - ${status}\n`;
             });
 
@@ -2190,7 +2107,7 @@
             textarea.select();
             document.execCommand('copy');
             document.body.removeChild(textarea);
-
+            
             notifySuccess('Teks absensi hari ini berhasil disalin ke clipboard!');
         }
 
@@ -2203,7 +2120,7 @@
             const data = siswaKelas.map((s, idx) => {
                 let row = { 'No': idx + 1, 'Nama Siswa': s.nama };
                 let totalH = 0, totalS = 0, totalI = 0, totalA = 0, totalD = 0;
-
+                
                 uniqueDates.forEach(date => {
                     const rec = records.find(a => a.siswaId === s.id && a.tanggal === date);
                     const status = rec ? rec.status : '-';
@@ -2213,21 +2130,21 @@
                     else if (status === 'Izin') { initial = 'I'; totalI++; }
                     else if (status === 'Alpa') { initial = 'A'; totalA++; }
                     else if (status === 'Dispensasi') { initial = 'D'; totalD++; }
-
+                    
                     const d = new Date(date);
                     const dateStr = d.toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit' });
                     row[dateStr] = initial;
                 });
-
+                
                 row['Tot H'] = totalH;
                 row['Tot S'] = totalS;
                 row['Tot I'] = totalI;
                 row['Tot A'] = totalA;
                 row['Tot D'] = totalD;
-
+                
                 const totalMeetings = uniqueDates.length || 1;
                 row['% Hadir'] = (uniqueDates.length === 0 ? 100 : Math.round((totalH / totalMeetings) * 100)) + '%';
-
+                
                 return row;
             });
 
@@ -2263,22 +2180,22 @@
                 tbodyHtml = siswaKelas.map((s, idx) => {
                     let rowHtml = `<tr><td class="border p-1 text-center">${idx + 1}</td><td class="border p-1 font-semibold text-left">${s.nama}</td>`;
                     let totalH = 0, totalS = 0, totalI = 0, totalA = 0, totalD = 0;
-
+                    
                     uniqueDates.forEach(date => {
                         const rec = records.find(a => a.siswaId === s.id && a.tanggal === date);
                         const status = rec ? rec.status : '-';
                         let initial = '-';
                         let textColor = '';
-
+                        
                         if (status === 'Hadir') { initial = 'H'; textColor = 'text-emerald-600 font-bold'; totalH++; }
                         else if (status === 'Sakit') { initial = 'S'; textColor = 'text-blue-600 font-bold'; totalS++; }
                         else if (status === 'Izin') { initial = 'I'; textColor = 'text-purple-600 font-bold'; totalI++; }
                         else if (status === 'Alpa') { initial = 'A'; textColor = 'text-rose-600 font-bold'; totalA++; }
                         else if (status === 'Dispensasi') { initial = 'D'; textColor = 'text-amber-600 font-bold'; totalD++; }
-
+                        
                         rowHtml += `<td class="border p-1 text-center ${textColor}">${initial}</td>`;
                     });
-
+                    
                     const totalMeetings = uniqueDates.length || 1;
                     const persen = uniqueDates.length === 0 ? 100 : Math.round((totalH / totalMeetings) * 100);
 
@@ -2364,33 +2281,33 @@
                 tbodyHtml = siswaKelas.map((s, idx) => {
                     let rowHtml = `<tr><td class="border p-1 text-center text-slate-500">${idx + 1}</td><td class="border p-1 font-semibold text-left whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]">${s.nama}</td>`;
                     let totalH = 0, totalS = 0, totalI = 0, totalA = 0, totalD = 0;
-
+                    
                     uniqueDates.forEach(date => {
                         const rec = records.find(a => a.siswaId === s.id && a.tanggal === date);
                         const status = rec ? rec.status : '-';
                         let initial = '-';
                         let textColor = '';
-
+                        
                         if (status === 'Hadir') { initial = 'H'; textColor = 'text-emerald-600 font-bold bg-emerald-50/30'; totalH++; }
                         else if (status === 'Sakit') { initial = 'S'; textColor = 'text-blue-600 font-bold bg-blue-50/30'; totalS++; }
                         else if (status === 'Izin') { initial = 'I'; textColor = 'text-purple-600 font-bold bg-purple-50/30'; totalI++; }
                         else if (status === 'Alpa') { initial = 'A'; textColor = 'text-rose-600 font-bold bg-rose-50/30'; totalA++; }
                         else if (status === 'Dispensasi') { initial = 'D'; textColor = 'text-amber-600 font-bold bg-amber-50/30'; totalD++; }
-
+                        
                         rowHtml += `<td class="border p-1 text-center ${textColor}">${initial}</td>`;
                     });
-
+                    
                     const totalMeetings = uniqueDates.length || 1;
                     const persen = uniqueDates.length === 0 ? 100 : Math.round((totalH / totalMeetings) * 100);
                     const persenColor = persen < 75 ? 'text-rose-600' : 'text-brand-600';
-
+                    
                     rowHtml += `<td class="border p-1 text-center font-bold text-emerald-700 bg-emerald-50">${totalH}</td>`;
                     rowHtml += `<td class="border p-1 text-center font-bold text-blue-700 bg-blue-50">${totalS}</td>`;
                     rowHtml += `<td class="border p-1 text-center font-bold text-purple-700 bg-purple-50">${totalI}</td>`;
                     rowHtml += `<td class="border p-1 text-center font-bold text-rose-700 bg-rose-50">${totalA}</td>`;
                     rowHtml += `<td class="border p-1 text-center font-bold text-amber-700 bg-amber-50">${totalD}</td>`;
                     rowHtml += `<td class="border p-1 text-center font-bold ${persenColor} bg-brand-50">${persen}%</td></tr>`;
-
+                    
                     return rowHtml;
                 }).join('');
             }
@@ -2427,7 +2344,7 @@
                 allowOutsideClick: false,
                 didOpen: () => {
                     Swal.showLoading();
-
+                    
                     const wrapper = document.createElement('div');
                     wrapper.style.position = 'absolute';
                     wrapper.style.left = '-9999px';
@@ -2435,11 +2352,11 @@
                     document.body.appendChild(wrapper);
 
                     const el = document.getElementById('rekapDetailPrintContainerJpg');
-
+                    
                     html2canvas(el, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
                         document.body.removeChild(wrapper);
                         const imgData = canvas.toDataURL('image/jpeg', 0.95);
-
+                        
                         Swal.fire({
                             title: 'Preview Export JPG',
                             imageUrl: imgData,
@@ -2537,12 +2454,12 @@
                                         ${kolom.tugas.map((k, idx) => `
                                             <th class="p-2 text-center border-r border-slate-200 group relative min-w-[85px]">
                                                 <div class="flex items-center justify-center gap-1 bg-blue-50/50 py-1 px-1.5 rounded-lg border border-blue-100 shadow-sm">
-                                                    ${isSiswa ?
-                    `<span class="w-11 sm:w-12 text-center font-bold text-blue-800 text-[10px]">${k}</span>`
-                    :
-                    `<input type="text" value="${k}" onchange="editNilaiColumn('tugas', ${idx}, this.value)" class="w-11 sm:w-12 bg-transparent text-center font-bold text-blue-800 border-b border-transparent focus:border-blue-500 outline-none transition text-[10px]" title="Edit nama Tugas">
+                                                    ${isSiswa ? 
+                                                        `<span class="w-11 sm:w-12 text-center font-bold text-blue-800 text-[10px]">${k}</span>`
+                                                    :
+                                                        `<input type="text" value="${k}" onchange="editNilaiColumn('tugas', ${idx}, this.value)" class="w-11 sm:w-12 bg-transparent text-center font-bold text-blue-800 border-b border-transparent focus:border-blue-500 outline-none transition text-[10px]" title="Edit nama Tugas">
                                                         <button onclick="deleteNilaiColumn('tugas', ${idx})" class="text-rose-500 hover:text-rose-700 transition p-0.5" title="Hapus Kolom (beserta isinya)"><i class="fa-solid fa-trash-can"></i></button>`
-                }
+                                                    }
                                                 </div>
                                             </th>
                                         `).join('')}
@@ -2550,11 +2467,11 @@
                                             <th class="p-2 text-center border-r border-slate-200 group relative min-w-[85px]">
                                                 <div class="flex items-center justify-center gap-1 bg-purple-50/50 py-1 px-1.5 rounded-lg border border-purple-100 shadow-sm">
                                                     ${isSiswa ?
-                        `<span class="w-11 sm:w-12 text-center font-bold text-purple-800 text-[10px]">${k}</span>`
-                        :
-                        `<input type="text" value="${k}" onchange="editNilaiColumn('uh', ${idx}, this.value)" class="w-11 sm:w-12 bg-transparent text-center font-bold text-purple-800 border-b border-transparent focus:border-purple-500 outline-none transition text-[10px]" title="Edit nama UH">
+                                                        `<span class="w-11 sm:w-12 text-center font-bold text-purple-800 text-[10px]">${k}</span>`
+                                                    :
+                                                        `<input type="text" value="${k}" onchange="editNilaiColumn('uh', ${idx}, this.value)" class="w-11 sm:w-12 bg-transparent text-center font-bold text-purple-800 border-b border-transparent focus:border-purple-500 outline-none transition text-[10px]" title="Edit nama UH">
                                                         <button onclick="deleteNilaiColumn('uh', ${idx})" class="text-rose-500 hover:text-rose-700 transition p-0.5" title="Hapus Kolom (beserta isinya)"><i class="fa-solid fa-trash-can"></i></button>`
-                    }
+                                                    }
                                                 </div>
                                             </th>
                                         `).join('')}
@@ -2562,11 +2479,11 @@
                                             <th class="p-2 text-center border-r border-slate-200 group relative min-w-[85px]">
                                                 <div class="flex items-center justify-center gap-1 bg-amber-50/50 py-1 px-1.5 rounded-lg border border-amber-100 shadow-sm">
                                                     ${isSiswa ?
-                            `<span class="w-11 sm:w-12 text-center font-bold text-amber-800 text-[10px]">${k}</span>`
-                            :
-                            `<input type="text" value="${k}" onchange="editNilaiColumn('uts', ${idx}, this.value)" class="w-11 sm:w-12 bg-transparent text-center font-bold text-amber-800 border-b border-transparent focus:border-amber-500 outline-none transition text-[10px]" title="Edit nama UTS/PTS">
+                                                        `<span class="w-11 sm:w-12 text-center font-bold text-amber-800 text-[10px]">${k}</span>`
+                                                    :
+                                                        `<input type="text" value="${k}" onchange="editNilaiColumn('uts', ${idx}, this.value)" class="w-11 sm:w-12 bg-transparent text-center font-bold text-amber-800 border-b border-transparent focus:border-amber-500 outline-none transition text-[10px]" title="Edit nama UTS/PTS">
                                                         <button onclick="deleteNilaiColumn('uts', ${idx})" class="text-rose-500 hover:text-rose-700 transition p-0.5" title="Hapus Kolom (beserta isinya)"><i class="fa-solid fa-trash-can"></i></button>`
-                        }
+                                                    }
                                                 </div>
                                             </th>
                                         `).join('')}
@@ -2574,11 +2491,11 @@
                                             <th class="p-2 text-center border-r border-slate-200 group relative min-w-[85px]">
                                                 <div class="flex items-center justify-center gap-1 bg-rose-50/50 py-1 px-1.5 rounded-lg border border-rose-100 shadow-sm">
                                                     ${isSiswa ?
-                                `<span class="w-11 sm:w-12 text-center font-bold text-rose-800 text-[10px]">${k}</span>`
-                                :
-                                `<input type="text" value="${k}" onchange="editNilaiColumn('uas', ${idx}, this.value)" class="w-11 sm:w-12 bg-transparent text-center font-bold text-rose-800 border-b border-transparent focus:border-rose-500 outline-none transition text-[10px]" title="Edit nama UAS/PAS">
+                                                        `<span class="w-11 sm:w-12 text-center font-bold text-rose-800 text-[10px]">${k}</span>`
+                                                    :
+                                                        `<input type="text" value="${k}" onchange="editNilaiColumn('uas', ${idx}, this.value)" class="w-11 sm:w-12 bg-transparent text-center font-bold text-rose-800 border-b border-transparent focus:border-rose-500 outline-none transition text-[10px]" title="Edit nama UAS/PAS">
                                                         <button onclick="deleteNilaiColumn('uas', ${idx})" class="text-rose-500 hover:text-rose-700 transition p-0.5" title="Hapus Kolom (beserta isinya)"><i class="fa-solid fa-trash-can"></i></button>`
-                            }
+                                                    }
                                                 </div>
                                             </th>
                                         `).join('')}
@@ -2587,30 +2504,30 @@
                                 </thead>
                                 <tbody class="divide-y divide-slate-100">
                                     ${siswaKelas.length === 0 ? `<tr><td colspan="${kolom.tugas.length + kolom.uh.length + kolom.uts.length + kolom.uas.length + 2}" class="p-6 text-center text-slate-400">Tidak ada siswa untuk kelas ini</td></tr>` :
-                    siswaKelas.map(s => {
-                        const rec = db.nilai.find(n => n.siswaId === s.id && n.mapel === mapelTarget) || { tugas: [], uh: [], uts: [], uas: [] };
+                                      siswaKelas.map(s => {
+                                        const rec = db.nilai.find(n => n.siswaId === s.id && n.mapel === mapelTarget) || { tugas: [], uh: [], uts: [], uas: [] };
+                                        
+                                        const rUts = Array.isArray(rec.uts) ? rec.uts : (rec.uts !== undefined ? [rec.uts] : []);
+                                        const rUas = Array.isArray(rec.uas) ? rec.uas : (rec.uas !== undefined ? [rec.uas] : []);
 
-                        const rUts = Array.isArray(rec.uts) ? rec.uts : (rec.uts !== undefined ? [rec.uts] : []);
-                        const rUas = Array.isArray(rec.uas) ? rec.uas : (rec.uas !== undefined ? [rec.uas] : []);
+                                        const tugasScores = kolom.tugas.map((_, i) => rec.tugas[i] || 0);
+                                        const uhScores = kolom.uh.map((_, i) => rec.uh[i] || 0);
+                                        const utsScores = kolom.uts.map((_, i) => rUts[i] || 0);
+                                        const uasScores = kolom.uas.map((_, i) => rUas[i] || 0);
 
-                        const tugasScores = kolom.tugas.map((_, i) => rec.tugas[i] || 0);
-                        const uhScores = kolom.uh.map((_, i) => rec.uh[i] || 0);
-                        const utsScores = kolom.uts.map((_, i) => rUts[i] || 0);
-                        const uasScores = kolom.uas.map((_, i) => rUas[i] || 0);
+                                        const avgTugas = tugasScores.length > 0 ? tugasScores.reduce((a,b)=>a+b,0)/tugasScores.length : 0;
+                                        const avgUh = uhScores.length > 0 ? uhScores.reduce((a,b)=>a+b,0)/uhScores.length : 0;
+                                        const avgUts = utsScores.length > 0 ? utsScores.reduce((a,b)=>a+b,0)/utsScores.length : 0;
+                                        const avgUas = uasScores.length > 0 ? uasScores.reduce((a,b)=>a+b,0)/uasScores.length : 0;
+                                        
+                                        const na = (
+                                            (avgTugas * db.pengaturan.bobotTugas / 100) +
+                                            (avgUh * db.pengaturan.bobotUH / 100) +
+                                            (avgUts * db.pengaturan.bobotUTS / 100) +
+                                            (avgUas * db.pengaturan.bobotUAS / 100)
+                                        ).toFixed(1);
 
-                        const avgTugas = tugasScores.length > 0 ? tugasScores.reduce((a, b) => a + b, 0) / tugasScores.length : 0;
-                        const avgUh = uhScores.length > 0 ? uhScores.reduce((a, b) => a + b, 0) / uhScores.length : 0;
-                        const avgUts = utsScores.length > 0 ? utsScores.reduce((a, b) => a + b, 0) / utsScores.length : 0;
-                        const avgUas = uasScores.length > 0 ? uasScores.reduce((a, b) => a + b, 0) / uasScores.length : 0;
-
-                        const na = (
-                            (avgTugas * db.pengaturan.bobotTugas / 100) +
-                            (avgUh * db.pengaturan.bobotUH / 100) +
-                            (avgUts * db.pengaturan.bobotUTS / 100) +
-                            (avgUas * db.pengaturan.bobotUAS / 100)
-                        ).toFixed(1);
-
-                        return `
+                                        return `
                                             <tr class="hover:bg-slate-50 transition group">
                                                 <td class="p-2 font-semibold text-slate-800 sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-200 shadow-[2px_0_4px_-1px_rgba(0,0,0,0.05)]">
                                                     <div class="truncate max-w-[100px] sm:max-w-[200px]" title="${s.nama}">${s.nama}</div>
@@ -2638,7 +2555,7 @@
                                                 <td class="p-2 text-center font-bold text-sm text-brand-600 sticky right-0 z-10 bg-brand-50 group-hover:bg-brand-50/80 shadow-[-2px_0_4px_-1px_rgba(0,0,0,0.05)]">${na}</td>
                                             </tr>
                                         `;
-                    }).join('')}
+                                      }).join('')}
                                 </tbody>
                             </table>
                         </div>
@@ -2651,14 +2568,14 @@
             const filter = getActiveGlobalFilter();
             const mapelTarget = filter.mapel || 'Semua Mapel';
             let rec = db.nilai.find(n => n.siswaId === siswaId && n.mapel === mapelTarget);
-
+            
             if (!rec) {
                 const kolom = getKolomNilai(mapelTarget);
                 const initTugas = Array(kolom.tugas.length).fill(0);
                 const initUh = Array(kolom.uh.length).fill(0);
                 const initUts = Array(kolom.uts.length).fill(0);
                 const initUas = Array(kolom.uas.length).fill(0);
-
+                
                 rec = { id: 'N' + Date.now(), siswaId, mapel: mapelTarget, kelas: filter.kelas, ta: filter.ta, tugas: initTugas, uh: initUh, uts: initUts, uas: initUas };
                 db.nilai.push(rec);
             }
@@ -2667,10 +2584,10 @@
             if (!Array.isArray(rec.uas)) rec.uas = [rec.uas || 0];
 
             const numVal = parseFloat(val) || 0;
-            if (field === 'tugas') { while (rec.tugas.length <= idx) rec.tugas.push(0); rec.tugas[idx] = numVal; }
-            else if (field === 'uh') { while (rec.uh.length <= idx) rec.uh.push(0); rec.uh[idx] = numVal; }
-            else if (field === 'uts') { while (rec.uts.length <= idx) rec.uts.push(0); rec.uts[idx] = numVal; }
-            else if (field === 'uas') { while (rec.uas.length <= idx) rec.uas.push(0); rec.uas[idx] = numVal; }
+            if (field === 'tugas') { while(rec.tugas.length <= idx) rec.tugas.push(0); rec.tugas[idx] = numVal; }
+            else if (field === 'uh') { while(rec.uh.length <= idx) rec.uh.push(0); rec.uh[idx] = numVal; }
+            else if (field === 'uts') { while(rec.uts.length <= idx) rec.uts.push(0); rec.uts[idx] = numVal; }
+            else if (field === 'uas') { while(rec.uas.length <= idx) rec.uas.push(0); rec.uas[idx] = numVal; }
 
             saveDb('nilai');
             renderModuleContent('nilai');
@@ -2680,7 +2597,7 @@
             const filter = getActiveGlobalFilter();
             const mapelTarget = filter.mapel || 'Semua Mapel';
             const kolom = getKolomNilai(mapelTarget);
-
+            
             kolom[type].push(`${type.toUpperCase()} ${kolom[type].length + 1}`);
             saveDb('kolomNilai');
             notifySuccess(`Kolom evaluasi ${type.toUpperCase()} berhasil ditambahkan!`);
@@ -2691,7 +2608,7 @@
             const filter = getActiveGlobalFilter();
             const mapelTarget = filter.mapel || 'Semua Mapel';
             const kolom = getKolomNilai(mapelTarget);
-
+            
             if (newName.trim()) {
                 kolom[type][idx] = newName.trim();
                 saveDb('kolomNilai');
@@ -2711,10 +2628,10 @@
                     const filter = getActiveGlobalFilter();
                     const mapelTarget = filter.mapel || 'Semua Mapel';
                     const kolom = getKolomNilai(mapelTarget);
-
+                    
                     kolom[type].splice(idx, 1);
                     saveDb('kolomNilai');
-
+                    
                     db.nilai.filter(n => n.mapel === mapelTarget).forEach(n => {
                         if (n[type] !== undefined) {
                             if (!Array.isArray(n[type])) n[type] = [n[type] || 0];
@@ -2724,7 +2641,7 @@
                         }
                     });
                     saveDb('nilai');
-
+                    
                     notifySuccess('Kolom berhasil dihapus!');
                     renderModuleContent('nilai');
                 }
@@ -2747,11 +2664,11 @@
                 const utsScores = kolom.uts.map((_, i) => rUts[i] || 0);
                 const uasScores = kolom.uas.map((_, i) => rUas[i] || 0);
 
-                const avgTugas = tugasScores.length > 0 ? tugasScores.reduce((a, b) => a + b, 0) / tugasScores.length : 0;
-                const avgUh = uhScores.length > 0 ? uhScores.reduce((a, b) => a + b, 0) / uhScores.length : 0;
-                const avgUts = utsScores.length > 0 ? utsScores.reduce((a, b) => a + b, 0) / utsScores.length : 0;
-                const avgUas = uasScores.length > 0 ? uasScores.reduce((a, b) => a + b, 0) / uasScores.length : 0;
-
+                const avgTugas = tugasScores.length > 0 ? tugasScores.reduce((a,b)=>a+b,0)/tugasScores.length : 0;
+                const avgUh = uhScores.length > 0 ? uhScores.reduce((a,b)=>a+b,0)/uhScores.length : 0;
+                const avgUts = utsScores.length > 0 ? utsScores.reduce((a,b)=>a+b,0)/utsScores.length : 0;
+                const avgUas = uasScores.length > 0 ? uasScores.reduce((a,b)=>a+b,0)/uasScores.length : 0;
+                
                 const na = ((avgTugas * db.pengaturan.bobotTugas / 100) + (avgUh * db.pengaturan.bobotUH / 100) + (avgUts * db.pengaturan.bobotUTS / 100) + (avgUas * db.pengaturan.bobotUAS / 100)).toFixed(1);
 
                 let row = { 'No': idx + 1, 'Nama Siswa': s.nama };
@@ -2760,7 +2677,7 @@
                 kolom.uts.forEach((k, i) => row[k] = utsScores[i]);
                 kolom.uas.forEach((k, i) => row[k] = uasScores[i]);
                 row['Nilai Akhir'] = na;
-
+                
                 return row;
             });
 
@@ -2802,11 +2719,11 @@
                     const utsScores = kolom.uts.map((_, i) => rUts[i] || 0);
                     const uasScores = kolom.uas.map((_, i) => rUas[i] || 0);
 
-                    const avgTugas = tugasScores.length > 0 ? tugasScores.reduce((a, b) => a + b, 0) / tugasScores.length : 0;
-                    const avgUh = uhScores.length > 0 ? uhScores.reduce((a, b) => a + b, 0) / uhScores.length : 0;
-                    const avgUts = utsScores.length > 0 ? utsScores.reduce((a, b) => a + b, 0) / utsScores.length : 0;
-                    const avgUas = uasScores.length > 0 ? uasScores.reduce((a, b) => a + b, 0) / uasScores.length : 0;
-
+                    const avgTugas = tugasScores.length > 0 ? tugasScores.reduce((a,b)=>a+b,0)/tugasScores.length : 0;
+                    const avgUh = uhScores.length > 0 ? uhScores.reduce((a,b)=>a+b,0)/uhScores.length : 0;
+                    const avgUts = utsScores.length > 0 ? utsScores.reduce((a,b)=>a+b,0)/utsScores.length : 0;
+                    const avgUas = uasScores.length > 0 ? uasScores.reduce((a,b)=>a+b,0)/uasScores.length : 0;
+                    
                     const na = ((avgTugas * db.pengaturan.bobotTugas / 100) + (avgUh * db.pengaturan.bobotUH / 100) + (avgUts * db.pengaturan.bobotUTS / 100) + (avgUas * db.pengaturan.bobotUAS / 100)).toFixed(1);
 
                     let rowHtml = `<tr><td class="border p-1 text-center text-slate-500">${idx + 1}</td><td class="border p-1 font-semibold text-left whitespace-nowrap overflow-hidden text-ellipsis max-w-[150px]">${s.nama}</td>`;
@@ -2815,7 +2732,7 @@
                     utsScores.forEach(score => rowHtml += `<td class="border p-1 text-center">${score}</td>`);
                     uasScores.forEach(score => rowHtml += `<td class="border p-1 text-center">${score}</td>`);
                     rowHtml += `<td class="border p-1 text-center font-bold text-brand-700 bg-brand-50">${na}</td></tr>`;
-
+                    
                     return rowHtml;
                 }).join('');
             }
@@ -2893,11 +2810,11 @@
                     const utsScores = kolom.uts.map((_, i) => rUts[i] || 0);
                     const uasScores = kolom.uas.map((_, i) => rUas[i] || 0);
 
-                    const avgTugas = tugasScores.length > 0 ? tugasScores.reduce((a, b) => a + b, 0) / tugasScores.length : 0;
-                    const avgUh = uhScores.length > 0 ? uhScores.reduce((a, b) => a + b, 0) / uhScores.length : 0;
-                    const avgUts = utsScores.length > 0 ? utsScores.reduce((a, b) => a + b, 0) / utsScores.length : 0;
-                    const avgUas = uasScores.length > 0 ? uasScores.reduce((a, b) => a + b, 0) / uasScores.length : 0;
-
+                    const avgTugas = tugasScores.length > 0 ? tugasScores.reduce((a,b)=>a+b,0)/tugasScores.length : 0;
+                    const avgUh = uhScores.length > 0 ? uhScores.reduce((a,b)=>a+b,0)/uhScores.length : 0;
+                    const avgUts = utsScores.length > 0 ? utsScores.reduce((a,b)=>a+b,0)/utsScores.length : 0;
+                    const avgUas = uasScores.length > 0 ? uasScores.reduce((a,b)=>a+b,0)/uasScores.length : 0;
+                    
                     const na = ((avgTugas * db.pengaturan.bobotTugas / 100) + (avgUh * db.pengaturan.bobotUH / 100) + (avgUts * db.pengaturan.bobotUTS / 100) + (avgUas * db.pengaturan.bobotUAS / 100)).toFixed(1);
 
                     let rowHtml = `<tr><td class="border p-1 text-center text-slate-500">${idx + 1}</td><td class="border p-1 font-semibold text-left whitespace-nowrap overflow-hidden text-ellipsis max-w-[150px]">${s.nama}</td>`;
@@ -2906,7 +2823,7 @@
                     utsScores.forEach(score => rowHtml += `<td class="border p-1 text-center">${score}</td>`);
                     uasScores.forEach(score => rowHtml += `<td class="border p-1 text-center">${score}</td>`);
                     rowHtml += `<td class="border p-1 text-center font-bold text-brand-700 bg-brand-50">${na}</td></tr>`;
-
+                    
                     return rowHtml;
                 }).join('');
             }
@@ -2952,7 +2869,7 @@
                     html2canvas(el, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
                         document.body.removeChild(wrapper);
                         const imgData = canvas.toDataURL('image/jpeg', 0.95);
-
+                        
                         Swal.fire({
                             title: 'Preview Export JPG',
                             imageUrl: imgData,
@@ -2996,7 +2913,7 @@
 
                     <div class="space-y-3">
                         ${list.length === 0 ? `<div class="bg-white p-6 text-center text-slate-400 rounded-2xl border">Belum ada jurnal tercatat</div>` :
-                    list.map(j => `
+                          list.map(j => `
                             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
                                 <div class="space-y-1">
                                     <div class="flex items-center gap-2">
@@ -3092,8 +3009,8 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        ${list.length === 0 ? `<div class="col-span-full bg-white p-6 text-center text-slate-400 rounded-2xl border">Belum ada tugas untuk mata pelajaran ini</div>` :
-                    list.map(t => `
+                        ${list.length === 0 ? `<div class="col-span-full bg-white p-6 text-center text-slate-400 rounded-2xl border">Belum ada tugas untuk mata pelajaran ini</div>` : 
+                          list.map(t => `
                             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
                                 <div>
                                     <div class="flex items-center justify-between">
@@ -3182,9 +3099,9 @@
 
                     <div class="space-y-3">
                         ${db.catatan.length === 0 ? `<div class="bg-white p-6 text-center text-slate-400 rounded-2xl border">Belum ada catatan siswa</div>` :
-                    db.catatan.map(c => {
-                        const s = db.siswa.find(x => x.id === c.siswaId) || { nama: 'Siswa Tidak Ditemukan', kelas: '-' };
-                        return `
+                          db.catatan.map(c => {
+                            const s = db.siswa.find(x => x.id === c.siswaId) || { nama: 'Siswa Tidak Ditemukan', kelas: '-' };
+                            return `
                                 <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start justify-between gap-4">
                                     <div class="space-y-1">
                                         <div class="flex items-center gap-2">
@@ -3198,7 +3115,7 @@
                                     <button onclick="deleteCatatan('${c.id}')" class="p-2 text-rose-600 hover:bg-rose-50 rounded-lg"><i class="fa-solid fa-trash"></i></button>
                                 </div>
                             `;
-                    }).join('')}
+                          }).join('')}
                     </div>
                 </div>
             `;
@@ -3552,14 +3469,14 @@
                                 </thead>
                                 <tbody class="divide-y divide-slate-100">
                                     ${siswaKelas.length === 0 ? `<tr><td colspan="6" class="p-6 text-center text-slate-400">Tidak ada data siswa untuk dilaporkan</td></tr>` :
-                    siswaKelas.map(s => {
-                        const abs = db.absensi.filter(a => a.siswaId === s.id);
-                        const totalH = abs.filter(a => a.status === 'Hadir').length;
-                        const persenH = abs.length > 0 ? Math.round((totalH / abs.length) * 100) : 100;
+                                      siswaKelas.map(s => {
+                                        const abs = db.absensi.filter(a => a.siswaId === s.id);
+                                        const totalH = abs.filter(a => a.status === 'Hadir').length;
+                                        const persenH = abs.length > 0 ? Math.round((totalH / abs.length) * 100) : 100;
+                                        
+                                        const rCat = db.raporCatatan.find(rc => rc.siswaId === s.id) || { waliKelasNote: 'Sangat baik, pertahankan!' };
 
-                        const rCat = db.raporCatatan.find(rc => rc.siswaId === s.id) || { waliKelasNote: 'Sangat baik, pertahankan!' };
-
-                        return `
+                                        return `
                                             <tr class="hover:bg-slate-50 transition">
                                                 <td class="p-3 font-mono text-brand-600 font-semibold">${s.nisn}</td>
                                                 <td class="p-3 font-semibold text-slate-800">${s.nama}</td>
@@ -3575,7 +3492,7 @@
                                                 </td>
                                             </tr>
                                         `;
-                    }).join('')}
+                                      }).join('')}
                                 </tbody>
                             </table>
                         </div>
@@ -3817,7 +3734,7 @@
             }
 
             const reader = new FileReader();
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 tempStudentUploadedPhoto = e.target.result;
                 const previewImg = document.getElementById('previewSiswaAvatar');
                 if (previewImg) {
@@ -3836,7 +3753,7 @@
             }
 
             const reader = new FileReader();
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 const base64Data = e.target.result;
                 if (type === 'logo') {
                     tempSchoolLogo = base64Data;
@@ -3851,11 +3768,11 @@
 
         function savePengaturanSiswa() {
             const newPass = document.getElementById('setSiswaPassword').value;
-
+            
             if (!newPass) return notifyError('Password tidak boleh kosong!');
-
+            
             const idx = db.users.findIndex(u => u.id === currentUser.id);
-            if (idx !== -1) {
+            if(idx !== -1) {
                 db.users[idx].password = newPass;
                 if (tempStudentUploadedPhoto) {
                     db.users[idx].foto = tempStudentUploadedPhoto;
@@ -3865,8 +3782,8 @@
                 currentUser.password = newPass;
                 try {
                     localStorage.setItem('siags_loggedInUser', JSON.stringify(currentUser));
-                } catch (e) { }
-
+                } catch(e) {}
+                
                 updateHeaderUI();
                 notifySuccess('Profil dan Pengaturan berhasil diperbarui!');
             }
@@ -3878,13 +3795,13 @@
             }
             if (tempTeacherPhoto) {
                 db.pengaturan.fotoGuru = tempTeacherPhoto;
-
+                
                 const idx = db.users.findIndex(u => u.id === currentUser.id);
                 if (idx !== -1) {
                     db.users[idx].foto = tempTeacherPhoto;
                     currentUser.foto = tempTeacherPhoto;
                     saveDb('users');
-                    try { localStorage.setItem('siags_loggedInUser', JSON.stringify(currentUser)); } catch (e) { }
+                    try { localStorage.setItem('siags_loggedInUser', JSON.stringify(currentUser)); } catch(e) {}
                 }
             }
 
@@ -3949,7 +3866,7 @@
                     </div>
                 </div>
             `;
-
+            
             // Render initial cards
             renderAdminUserCards();
         }
@@ -3960,7 +3877,7 @@
 
             const pendingUsers = db.users.filter(u => u.status === 'Menunggu Verifikasi Email');
             let filteredUsers = db.users.filter(u => u.status !== 'Menunggu Verifikasi Email');
-
+            
             if (currentAdminRoleFilter) {
                 filteredUsers = filteredUsers.filter(u => u.role === currentAdminRoleFilter);
             }
@@ -4001,12 +3918,12 @@
                 html += `<div class="bg-white p-8 text-center text-slate-400 rounded-2xl border border-slate-200 shadow-sm">Tidak ada pengguna yang cocok dengan pencarian/filter.</div>`;
             } else {
                 html += `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">`;
-
+                
                 html += filteredUsers.map(u => {
                     // Styling based on role to match requested image
                     let roleStyle = '';
                     let avatarStyle = 'bg-blue-100 text-brand-600'; // Default avatar styling match
-
+                    
                     if (u.role === 'Admin Sistem') {
                         roleStyle = 'text-purple-600 bg-purple-50 border-purple-200';
                     } else if (u.role === 'Guru Mapel') {
@@ -4019,7 +3936,7 @@
                     const isAktif = u.status === 'Aktif';
                     const statusStyle = isAktif ? 'text-emerald-600 bg-emerald-50' : 'text-rose-600 bg-rose-50';
                     const statusIcon = isAktif ? 'fa-check' : 'fa-ban';
-
+                    
                     // Avatar Initials
                     const initial = u.nama.charAt(0).toUpperCase();
 
@@ -4035,10 +3952,10 @@
                             
                             <!-- User Info -->
                             <div class="flex items-center gap-3">
-                                ${u.foto ?
-                            `<img src="${u.foto}" class="w-11 h-11 rounded-full object-cover border border-slate-200">` :
-                            `<div class="w-11 h-11 rounded-full flex items-center justify-center font-bold text-lg ${avatarStyle}">${initial}</div>`
-                        }
+                                ${u.foto ? 
+                                    `<img src="${u.foto}" class="w-11 h-11 rounded-full object-cover border border-slate-200">` : 
+                                    `<div class="w-11 h-11 rounded-full flex items-center justify-center font-bold text-lg ${avatarStyle}">${initial}</div>`
+                                }
                                 <div class="min-w-0 flex-1">
                                     <div class="font-bold text-sm text-slate-800 truncate" title="${u.nama}">${u.nama}</div>
                                     <div class="text-xs text-slate-500 truncate" title="${u.email}">${u.email}</div>
@@ -4066,16 +3983,16 @@
                                 </div>
                                 <div class="flex gap-2">
                                     <button onclick="editUser('${u.id}')" class="px-4 py-1.5 bg-blue-50 text-brand-600 hover:bg-blue-100 rounded-lg text-xs font-bold transition">Edit</button>
-                                    ${u.id !== currentUser.id ?
-                            `<button onclick="deleteUser('${u.id}')" class="px-4 py-1.5 bg-rose-50 text-rose-600 hover:bg-rose-100 rounded-lg text-xs font-bold transition">Hapus</button>` :
-                            `<button class="px-4 py-1.5 bg-slate-100 text-slate-400 cursor-not-allowed rounded-lg text-xs font-bold" title="Akun sedang digunakan">Hapus</button>`
-                        }
+                                    ${u.id !== currentUser.id ? 
+                                        `<button onclick="deleteUser('${u.id}')" class="px-4 py-1.5 bg-rose-50 text-rose-600 hover:bg-rose-100 rounded-lg text-xs font-bold transition">Hapus</button>` : 
+                                        `<button class="px-4 py-1.5 bg-slate-100 text-slate-400 cursor-not-allowed rounded-lg text-xs font-bold" title="Akun sedang digunakan">Hapus</button>`
+                                    }
                                 </div>
                             </div>
                         </div>
                     `;
                 }).join('');
-
+                
                 html += `</div>`;
             }
 
@@ -4162,9 +4079,9 @@
             saveDb('users');
             closeModal();
             notifySuccess('Data pengguna berhasil disimpan!');
-
+            
             // Re-render only cards if currently in admin_users view
-            if (currentActiveModule === 'admin_users') {
+            if(currentActiveModule === 'admin_users') {
                 renderAdminUserCards();
             }
         }
@@ -4176,7 +4093,7 @@
 
         function deleteUser(id) {
             if (id === currentUser.id) return notifyError('Tidak dapat menghapus akun Anda sendiri saat sedang login!');
-
+            
             Swal.fire({
                 title: 'Hapus Pengguna?',
                 text: 'Akun ini akan dihapus secara permanen dari sistem.',
@@ -4189,19 +4106,19 @@
                     db.users = db.users.filter(u => u.id !== id);
                     saveDb('users');
                     notifySuccess('Pengguna berhasil dihapus!');
-                    if (currentActiveModule === 'admin_users') renderAdminUserCards();
+                    if(currentActiveModule === 'admin_users') renderAdminUserCards();
                 }
             });
         }
 
         function toggleUserStatus(id) {
             if (id === currentUser.id) return notifyError('Tidak dapat mengubah status akun Anda sendiri!');
-
+            
             const idx = db.users.findIndex(u => u.id === id);
             if (idx !== -1) {
                 db.users[idx].status = db.users[idx].status === 'Aktif' ? 'Nonaktif' : 'Aktif';
                 saveDb('users');
-                if (currentActiveModule === 'admin_users') renderAdminUserCards();
+                if(currentActiveModule === 'admin_users') renderAdminUserCards();
             }
         }
 
@@ -4211,7 +4128,7 @@
                 db.users[idx].status = 'Aktif';
                 saveDb('users');
                 notifySuccess('Akun siswa berhasil diverifikasi!');
-                if (currentActiveModule === 'admin_users') renderAdminUserCards();
+                if(currentActiveModule === 'admin_users') renderAdminUserCards();
             }
         }
 
@@ -4400,5 +4317,4 @@ function simpanDataKeSheet(collectionName, dataArray) {
 
     </script>
 </body>
-
 </html>
