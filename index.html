@@ -419,7 +419,7 @@
         }
 
         // URL Web App GAS Anda. Kosongkan jika ingin mode lokal/demo sementara.
-        const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbwbyCMayl43W9E6Q0Qnc-Djgj0gZ8Q3pmx2SvKV4FpSnmE8qNav4m0wWVbThy3xO2cUeg/exec';
+        const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbyetF_QyBTv6QxnOkG8jR761lZJydQePDo8ozGvi-x3dtNSO_iQcvgNg627_UNfkhS2Ww/exec';
 
         async function initializeApp() {
             const loginBtn = document.querySelector('button[onclick="handleUnifiedLogin(event)"]');
@@ -429,7 +429,7 @@
             }
 
             try {
-                if (GAS_API_URL === 'https://script.google.com/macros/s/AKfycbwbyCMayl43W9E6Q0Qnc-Djgj0gZ8Q3pmx2SvKV4FpSnmE8qNav4m0wWVbThy3xO2cUeg/exec' || GAS_API_URL === '') {
+                if (GAS_API_URL === 'https://script.google.com/macros/s/AKfycbyetF_QyBTv6QxnOkG8jR761lZJydQePDo8ozGvi-x3dtNSO_iQcvgNg627_UNfkhS2Ww/exec' || GAS_API_URL === '') {
                     console.log("Menggunakan mode penyimpanan lokal/demo karena URL GAS belum diatur.");
                     loadLocalFallback();
                     finalizeInit();
