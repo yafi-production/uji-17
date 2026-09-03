@@ -430,7 +430,7 @@
 
             try {
                 // UBAH BARIS IF INI KEMBALI SEPERTI SEMULA
-                if (GAS_API_URL === '' || GAS_API_URL === 'https://script.google.com/macros/s/AKfycbwbyCMayl43W9E6Q0Qnc-Djgj0gZ8Q3pmx2SvKV4FpSnmE8qNav4m0wWVbThy3xO2cUeg/exec') {
+                if (GAS_API_URL === '' || GAS_API_URL === '') {
                     console.log("Menggunakan mode penyimpanan lokal/demo karena URL GAS belum diatur.");
                     loadLocalFallback();
                     finalizeInit();
