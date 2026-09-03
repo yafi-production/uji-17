@@ -429,7 +429,8 @@
             }
 
             try {
-                if (GAS_API_URL === 'https://script.google.com/macros/s/AKfycbwbyCMayl43W9E6Q0Qnc-Djgj0gZ8Q3pmx2SvKV4FpSnmE8qNav4m0wWVbThy3xO2cUeg/exec' || GAS_API_URL === '') {
+                // UBAH BARIS IF INI KEMBALI SEPERTI SEMULA
+                if (GAS_API_URL === '' || GAS_API_URL === 'https://script.google.com/macros/s/AKfycbwbyCMayl43W9E6Q0Qnc-Djgj0gZ8Q3pmx2SvKV4FpSnmE8qNav4m0wWVbThy3xO2cUeg/exec') {
                     console.log("Menggunakan mode penyimpanan lokal/demo karena URL GAS belum diatur.");
                     loadLocalFallback();
                     finalizeInit();
@@ -4233,6 +4234,9 @@ function doGet(e) {
 
 // Menangani permintaan POST (Menyimpan Data ke Spreadsheet)
 function doPost(e) {
+  const lock = LockService.getScriptLock();
+  lock.waitLock(15000); // Sistem antrean 15 detik untuk mencegah bentrok data
+  
   try {
     const payload = JSON.parse(e.postData.contents);
     const key = payload.key;
@@ -4245,6 +4249,8 @@ function doPost(e) {
   } catch (error) {
     return ContentService.createTextOutput(JSON.stringify({status: 'error', message: error.message}))
       .setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
   }
 }
 
@@ -4298,7 +4304,7 @@ function ambilSemuaData() {
 
 function simpanDataKeSheet(collectionName, dataArray) {
   const sheet = checkAndCreateSheet(collectionName);
-  sheet.clear();
+  sheet.clearContents();
   
   if(!dataArray || (Array.isArray(dataArray) && dataArray.length === 0) || Object.keys(dataArray).length === 0) return true;
   
