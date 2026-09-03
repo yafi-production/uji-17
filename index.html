@@ -859,6 +859,17 @@
             document.getElementById('headerSchoolLogo').src = db.pengaturan.logo;
             document.getElementById('headerSchoolName').textContent = db.pengaturan.sekolah;
             
+            let favicon = document.querySelector("link[rel~='icon']");
+            if (!favicon) {
+                favicon = document.createElement('link');
+                favicon.rel = 'icon';
+                document.head.appendChild(favicon);
+            }
+            favicon.href = db.pengaturan.logo;
+
+            const loginLogo = document.getElementById('loginSchoolLogo');
+            if (loginLogo) loginLogo.src = db.pengaturan.logo;
+            
             const avatarEl = document.getElementById('headerTeacherAvatar');
             if (currentUser && currentUser.role === 'Siswa') {
                 avatarEl.src = currentUser.foto || 'https://placehold.co/150x150/eff6ff/1d4ed8?text=' + currentUser.nama.charAt(0);
