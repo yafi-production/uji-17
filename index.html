@@ -1426,8 +1426,15 @@
             const file = e.target.files[0];
             if (!file) return;
 
+            Swal.fire({
+                title: 'Mengimport Data...',
+                text: 'Membaca Excel dan menyimpan langsung ke Database (Spreadsheet). Mohon tunggu.',
+                allowOutsideClick: false,
+                didOpen: () => { Swal.showLoading(); }
+            });
+
             const reader = new FileReader();
-            reader.onload = function(evt) {
+            reader.onload = async function(evt) {
                 const data = new Uint8Array(evt.target.result);
                 const workbook = XLSX.read(data, { type: 'array' });
                 const worksheet = workbook.Sheets[workbook.SheetNames[0]];
@@ -1466,8 +1473,11 @@
                         count++;
                     }
                 });
-                saveDb('siswa');
-                notifySuccess(`${count} data siswa berhasil diimport!`);
+                
+                await saveDb('siswa');
+                
+                Swal.close();
+                notifySuccess(`${count} data siswa berhasil diimport dan disimpan ke Server!`);
                 renderModuleContent('siswa');
             };
             reader.readAsArrayBuffer(file);
